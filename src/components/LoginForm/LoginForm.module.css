@@ -1,0 +1,18 @@
+.formContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.emailInput {
+  display: grid;
+}
+
+.passwordInput {
+  display: grid;
+}
+
+.loginControlButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

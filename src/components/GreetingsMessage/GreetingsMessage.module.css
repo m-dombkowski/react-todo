@@ -1,0 +1,13 @@
+.welcomePage {
+  text-align: center;
+}
+
+.title {
+  font-size: 56px;
+  display: flex;
+  justify-content: center;
+}
+.login {
+  font-size: 20px;
+  padding: 12px 24px;
+}
