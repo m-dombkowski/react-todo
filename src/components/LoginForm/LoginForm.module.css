@@ -5,10 +5,12 @@
 
 .emailInput {
   display: grid;
+  margin: 20px 0 10px 0;
 }
 
 .passwordInput {
   display: grid;
+  margin-bottom: 20px;
 }
 
 .loginControlButtons {

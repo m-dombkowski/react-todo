@@ -1,40 +1,41 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { auth } from "../../auth/firebaseAuth";
+import RegisterInputsValidation from "../../validation/RegisterInputValidation";
+
+import classes from "./RegisterForm.module.css";
 
 const RegisterForm = () => {
+  const [errorMessage, setErrorMessage] = useState("");
+  const [errorStatus, setErrorStatus] = useState(false);
   const registerEmailInputRef = useRef();
   const registerPasswordInputRef = useRef();
 
   const registerAccountHandler = async (event) => {
+    event.preventDefault();
     const registerEmailInput = registerEmailInputRef.current.value;
     const registerPasswordInput = registerPasswordInputRef.current.value;
 
-    event.preventDefault();
-    createUserWithEmailAndPassword(
-      auth,
-      registerEmailInput,
-      registerPasswordInput
-    )
-      .then((userCredential) => {
-        const user = userCredential.user;
-        console.log(user);
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        console.log(errorCode);
-        const errorMessage = error.message;
-        console.log(errorMessage);
-      });
+    try {
+      await createUserWithEmailAndPassword(
+        auth,
+        registerEmailInput,
+        registerPasswordInput
+      );
+      setErrorStatus(false);
+    } catch (error) {
+      setErrorStatus(true);
+      setErrorMessage(error);
+    }
   };
 
   return (
-    <div>
-      <div>
+    <div className={classes.formContainer}>
+      <div className={classes.emailInput}>
         <label htmlFor="email">Email</label>
         <input ref={registerEmailInputRef} type="email" id="email"></input>
       </div>
-      <div>
+      <div className={classes.passwordInput}>
         <label htmlFor="password">Password</label>
         <input
           ref={registerPasswordInputRef}
@@ -42,6 +43,13 @@ const RegisterForm = () => {
           id="password"
         ></input>
       </div>
+      {errorStatus && (
+        <RegisterInputsValidation
+          errorState={errorMessage}
+          emailInput={registerEmailInputRef}
+          passwordInput={registerPasswordInputRef}
+        />
+      )}
       <button onClick={registerAccountHandler}>Create Account</button>
     </div>
   );

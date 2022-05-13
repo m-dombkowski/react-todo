@@ -4,17 +4,10 @@ const LoginErrorModal = (props) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const errorType = props.errorState.code;
-  console.log(errorType);
+
   useEffect(() => {
-    switch (errorType) {
-      case "auth/wrong-password":
-        setErrorMessage("Wrong Password. Please Try Again");
-        break;
-      case "auth/user-not-found":
-        setErrorMessage("Wrong Email address. Please Try Again");
-        break;
-      default:
-        setErrorMessage("no clue");
+    if (errorType) {
+      setErrorMessage("Login failed. Invalid e-mail or password");
     }
   }, [errorType]);
 
@@ -22,3 +15,11 @@ const LoginErrorModal = (props) => {
 };
 
 export default LoginErrorModal;
+
+// switch (errorType) {
+//   case "auth/wrong-password" || "auth/user-not-found":
+
+//     break;
+//   default:
+//     setErrorMessage("no clue");
+// }

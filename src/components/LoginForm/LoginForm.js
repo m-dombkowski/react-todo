@@ -5,8 +5,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../auth/firebaseAuth";
 import LoginErrorModal from "../../ui/ErrorModal/LoginErrorModal";
 
-const LoginForm = (props) => {
-  const [errorStatus, setErrorStatus] = useState(null);
+const LoginForm = () => {
+  const [errorStatus, setErrorStatus] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -27,9 +27,7 @@ const LoginForm = (props) => {
       setErrorStatus(false);
     } catch (error) {
       setErrorStatus(true);
-      console.log(errorStatus);
       setErrorMessage(error);
-      // props.test(error);
     }
   };
 

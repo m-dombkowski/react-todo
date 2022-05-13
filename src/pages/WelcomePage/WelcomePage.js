@@ -1,7 +1,7 @@
 import GreetingsMessage from "../../components/GreetingsMessage/GreetingsMessage";
 
-const Greetings = () => {
+const WelcomePage = () => {
   return <GreetingsMessage />;
 };
 
-export default Greetings;
+export default WelcomePage;
