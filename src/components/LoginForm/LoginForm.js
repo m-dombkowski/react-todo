@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import classes from "./LoginForm.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../auth/firebaseAuth";
@@ -8,6 +8,7 @@ import LoginValidation from "../../validation/LoginValidation";
 const LoginForm = () => {
   const [errorStatus, setErrorStatus] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const navigate = useNavigate();
 
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
@@ -26,6 +27,7 @@ const LoginForm = () => {
       );
       console.log(userCredential.user);
       setErrorStatus(false);
+      navigate("/");
     } catch (error) {
       setErrorStatus(true);
       setErrorMessage(error);

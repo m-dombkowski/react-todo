@@ -5,16 +5,11 @@ import Navigation from "./ui/Navigation/Navigation";
 import Footer from "./ui/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import { Fragment, useEffect } from "react";
+import { Fragment } from "react";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import WelcomePage from "./pages/WelcomePage/WelcomePage";
-import { getAuth } from "firebase/auth";
+import WelcomePage from "./pages/MainPage/MainPage";
 
 function App() {
-  useEffect(() => {
-    getAuth();
-  }, []);
-
   return (
     <Fragment>
       <Navigation />

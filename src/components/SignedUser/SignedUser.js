@@ -3,7 +3,6 @@ import UserContext from "../../context/user-context";
 
 const SignedUser = () => {
   const userContext = useContext(UserContext);
-  console.log(userContext);
 
   const isLoggedIn = userContext.isLoggedIn;
 

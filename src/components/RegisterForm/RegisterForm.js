@@ -25,7 +25,7 @@ const RegisterForm = () => {
         registerPasswordInput
       );
       setErrorStatus(false);
-      navigate("/login");
+      navigate("/");
     } catch (error) {
       setErrorStatus(true);
       setErrorMessage(error);
