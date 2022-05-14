@@ -1,5 +1,6 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { auth } from "../../auth/firebaseAuth";
 import RegisterInputsValidation from "../../validation/RegisterInputValidation";
 
@@ -10,6 +11,7 @@ const RegisterForm = () => {
   const [errorStatus, setErrorStatus] = useState(false);
   const registerEmailInputRef = useRef();
   const registerPasswordInputRef = useRef();
+  let navigate = useNavigate();
 
   const registerAccountHandler = async (event) => {
     event.preventDefault();
@@ -23,6 +25,7 @@ const RegisterForm = () => {
         registerPasswordInput
       );
       setErrorStatus(false);
+      navigate("/login");
     } catch (error) {
       setErrorStatus(true);
       setErrorMessage(error);

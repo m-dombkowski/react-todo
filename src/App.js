@@ -5,11 +5,16 @@ import Navigation from "./ui/Navigation/Navigation";
 import Footer from "./ui/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import { Fragment } from "react";
+import { Fragment, useEffect } from "react";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import WelcomePage from "./pages/WelcomePage/WelcomePage";
+import { getAuth } from "firebase/auth";
 
 function App() {
+  useEffect(() => {
+    getAuth();
+  }, []);
+
   return (
     <Fragment>
       <Navigation />
@@ -24,14 +29,3 @@ function App() {
 }
 
 export default App;
-
-/* 
- <Navigation />
-      <main>
-        <Greetings />
-        <div className="main-login-button-container">
-          <button className="main-login-button">Login</button>
-        </div>
-      </main>
-      <Footer />
-*/

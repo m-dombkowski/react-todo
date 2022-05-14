@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import classes from "./LoginForm.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../auth/firebaseAuth";
-import LoginErrorModal from "../../ui/ErrorModal/LoginErrorModal";
+import LoginValidation from "../../validation/LoginValidation";
 
 const LoginForm = () => {
   const [errorStatus, setErrorStatus] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+
   const emailInputRef = useRef();
   const passwordInputRef = useRef();
 
@@ -42,11 +43,11 @@ const LoginForm = () => {
           <label htmlFor="password">Password</label>
           <input ref={passwordInputRef} type="password" id="password"></input>
         </div>
+        {errorStatus && <LoginValidation errorState={errorMessage} />}
         <div className={classes.loginControlButtons}>
           <button type="submit">Login</button>
           <Link to="/register">No account? Sign up!</Link>
         </div>
-        {errorStatus && <LoginErrorModal errorState={errorMessage} />}
       </form>
     </div>
   );
