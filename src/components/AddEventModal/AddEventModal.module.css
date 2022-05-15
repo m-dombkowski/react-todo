@@ -1,0 +1,14 @@
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 45%;
+
+  z-index: 9999999;
+  backdrop-filter: blur(2px);
+  padding: 50px 100px;
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+}
