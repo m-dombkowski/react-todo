@@ -1,0 +1,11 @@
+.sideBar {
+  display: flex;
+  flex-direction: column;
+
+  text-align: center;
+}
+
+.helperButtons {
+  /* display: flex;
+  flex-direction: column; */
+}
