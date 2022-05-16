@@ -2,13 +2,13 @@ import { useRef, useState } from "react";
 import classes from "./AddEventModal.module.css";
 
 const AddEventModal = (props) => {
-  const [ref, setRef] = useState("");
+  let ref;
   const addEventRef = useRef();
   // console.log(props.obj);
 
   const submitHandler = (event) => {
     event.preventDefault();
-    setRef(addEventRef.current.value);
+    ref = addEventRef.current.value;
     console.log(ref);
     props.handler(props.obj, ref);
     props.onClose();
