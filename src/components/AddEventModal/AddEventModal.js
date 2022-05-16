@@ -1,10 +1,9 @@
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import classes from "./AddEventModal.module.css";
 
 const AddEventModal = (props) => {
   let ref;
   const addEventRef = useRef();
-  // console.log(props.obj);
 
   const submitHandler = (event) => {
     event.preventDefault();

@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import RegisterErrorModal from "../ui/ErrorModal/RegisterErrorModal";
-import { passwordRegexValidation } from "./PasswordValidation";
 
 const RegisterInputsValidation = (props) => {
   const [errorMessage, setErrorMessage] = useState("");
@@ -14,8 +13,6 @@ const RegisterInputsValidation = (props) => {
       return;
     }
 
-    passwordRegexValidation(password);
-
     switch (errorType) {
       case "auth/missing-email":
         setErrorMessage("E-mail field can't be empty");
@@ -23,9 +20,9 @@ const RegisterInputsValidation = (props) => {
       case "auth/invalid-email":
         setErrorMessage("Wrong e-mail format. Example: example@test.gg");
         break;
-      // case "auth/weak-password":
-      //   setErrorMessage("Password should be at least 6 characters");
-      //   break;
+      case "auth/weak-password":
+        setErrorMessage("Password should be at least 6 characters");
+        break;
       case "auth/internal-error":
         setErrorMessage("Error. Can't leave blank field");
         break;

@@ -1,8 +1,9 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../auth/firebaseAuth";
+import { auth } from "../../database/firebaseAuth";
 import RegisterInputsValidation from "../../validation/RegisterInputValidation";
+import { writeUserToDb } from "../../database/firebaseDatabase";
 
 import classes from "./RegisterForm.module.css";
 
@@ -24,6 +25,8 @@ const RegisterForm = () => {
         registerEmailInput,
         registerPasswordInput
       );
+
+      writeUserToDb();
       setErrorStatus(false);
       navigate("/");
     } catch (error) {

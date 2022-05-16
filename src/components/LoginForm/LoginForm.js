@@ -2,8 +2,9 @@ import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./LoginForm.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../auth/firebaseAuth";
+import { auth } from "../../database/firebaseAuth";
 import LoginValidation from "../../validation/LoginValidation";
+import { getUserEventsFromDatabase } from "../../database/firebaseDatabase";
 
 const LoginForm = () => {
   const [errorStatus, setErrorStatus] = useState(false);
@@ -26,6 +27,7 @@ const LoginForm = () => {
         loginPassword
       );
       console.log(userCredential.user);
+      getUserEventsFromDatabase();
       setErrorStatus(false);
       navigate("/");
     } catch (error) {

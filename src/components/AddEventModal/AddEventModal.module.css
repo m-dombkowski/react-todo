@@ -5,10 +5,14 @@
 
   z-index: 9999999;
   backdrop-filter: blur(2px);
-  padding: 50px 100px;
+  /* padding: 50px 100px; */
+
+  height: auto;
 }
 
 .modalForm {
   display: flex;
   flex-direction: column;
+  border: 2px solid #000;
+  padding: 50px 100px;
 }

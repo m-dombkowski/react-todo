@@ -1,4 +1,4 @@
-import FullCalendar from "@fullcalendar/react"; // must be first import
+import FullCalendar from "@fullcalendar/react"; // must be first
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
@@ -6,18 +6,20 @@ import listPlugin from "@fullcalendar/list";
 import { getAuth } from "firebase/auth";
 import classes from "./Calendar.module.css";
 import CalendarSideBar from "../CalendarSideBar/CalendarSideBar";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import AddEventModal from "../AddEventModal/AddEventModal";
+import { getDatabase, ref, push } from "firebase/database";
 
 const Calendar = (props) => {
   const [toggleWeekends, setToggleWeekends] = useState(true);
   const [toggleWeekNumber, setToggleWeekNumber] = useState(false);
   const [objState, setObjState] = useState({});
   const [addEventModal, setAddEventModal] = useState(false);
-  // const auth = getAuth();
+  const auth = getAuth();
+  const db = getDatabase();
 
-  // const currentUser = auth.currentUser.accessToken;
-  // console.log(currentUser);
+  const currentUserId = auth.currentUser.uid;
+  console.log(currentUserId);
 
   const toggleWeekendsHandler = () => {
     setToggleWeekends((prevState) => !prevState);
@@ -27,14 +29,23 @@ const Calendar = (props) => {
     setToggleWeekNumber((prevState) => !prevState);
   };
 
-  const testing1 = (selectInfo, ref) => {
+  const addEventHandler = (selectInfo, reference) => {
     setObjState(selectInfo);
     setAddEventModal(true);
     let calendar = selectInfo.view.calendar;
-
-    if (ref) {
+    console.log(selectInfo);
+    console.log(calendar);
+    if (reference) {
       calendar.addEvent({
-        title: ref,
+        title: reference,
+        start: selectInfo.startStr,
+        end: selectInfo.endStr,
+        allDay: selectInfo.allDay,
+      });
+
+      // Pushing Calendar Events to Database
+      push(ref(db, "users/" + auth.currentUser.uid + "/events"), {
+        title: reference,
         start: selectInfo.startStr,
         end: selectInfo.endStr,
         allDay: selectInfo.allDay,
@@ -45,23 +56,6 @@ const Calendar = (props) => {
   const closeModalHandler = () => {
     setAddEventModal(false);
   };
-
-  // const addEventHandler = (selectInfo) => {
-  //   let title = prompt("Add Event Title");
-  //   let calendar = selectInfo.view.calendar;
-  //   console.log(selectInfo);
-
-  //   if (title) {
-  //     calendar.addEvent({
-  //       title,
-  //       start: selectInfo.startStr,
-  //       end: selectInfo.endStr,
-  //       allDay: selectInfo.allDay,
-  //     });
-  //   }
-
-  //   console.log(calendar);
-  // };
 
   const removeEventHandler = (clickInfo) => {
     clickInfo.event.remove();
@@ -75,7 +69,7 @@ const Calendar = (props) => {
       {addEventModal && (
         <AddEventModal
           obj={objState}
-          handler={testing1}
+          handler={addEventHandler}
           onClose={closeModalHandler}
         />
       )}
@@ -102,7 +96,8 @@ const Calendar = (props) => {
           editable={true}
           selectable={true}
           selectMirror={true}
-          select={testing1}
+          dayMaxEventRows={true}
+          select={addEventHandler}
           // dateClick={testing}
           weekends={toggleWeekends}
           weekNumbers={toggleWeekNumber}
