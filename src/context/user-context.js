@@ -16,7 +16,6 @@ export const UserContextProvider = (props) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         const userEmail = user.email;
-
         setCurrentUser(userEmail);
         setIsLoggedIn(true);
       } else {

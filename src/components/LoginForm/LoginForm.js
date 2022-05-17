@@ -2,9 +2,9 @@ import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./LoginForm.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
-import { auth } from "../../database/firebaseAuth";
+import { auth } from "../../firebase/firebaseAuth";
 import LoginValidation from "../../validation/LoginValidation";
-import { getUserEventsFromDatabase } from "../../database/firebaseDatabase";
+import { getUserEventsFromDatabase } from "../../firebase/firebaseDatabase";
 
 const LoginForm = () => {
   const [errorStatus, setErrorStatus] = useState(false);
@@ -21,12 +21,7 @@ const LoginForm = () => {
     const loginPassword = passwordInputRef.current.value;
 
     try {
-      const userCredential = await signInWithEmailAndPassword(
-        auth,
-        loginEmail,
-        loginPassword
-      );
-      console.log(userCredential.user);
+      await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       getUserEventsFromDatabase();
       setErrorStatus(false);
       navigate("/");

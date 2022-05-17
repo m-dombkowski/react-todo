@@ -1,9 +1,9 @@
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { auth } from "../../database/firebaseAuth";
+import { auth } from "../../firebase/firebaseAuth";
 import RegisterInputsValidation from "../../validation/RegisterInputValidation";
-import { writeUserToDb } from "../../database/firebaseDatabase";
+import { writeUserToDb } from "../../firebase/firebaseDatabase";
 
 import classes from "./RegisterForm.module.css";
 

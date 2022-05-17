@@ -16,6 +16,9 @@ const AddEventModal = (props) => {
   return (
     <div className={classes.modal}>
       <form className={classes.modalForm} onSubmit={submitHandler}>
+        <button type="button" onClick={props.onClose}>
+          Close
+        </button>
         <label>Add Event Title</label>
         <input ref={addEventRef} type="text"></input>
         <button type="submit">Add</button>
