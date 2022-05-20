@@ -8,7 +8,8 @@
   border-bottom: 3px solid #000;
 }
 
-.login {
+.login,
+.settings {
   background: #fff;
   color: #000;
   padding: 12px 32px;
@@ -33,4 +34,14 @@
 
 .nav {
   width: 100%;
+}
+
+.userControlContainer {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.settings {
+  font-size: 16px;
 }

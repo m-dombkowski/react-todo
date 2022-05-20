@@ -22,7 +22,6 @@ const LoginForm = () => {
 
     try {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-      getUserEventsFromDatabase();
       setErrorStatus(false);
       navigate("/");
     } catch (error) {

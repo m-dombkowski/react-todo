@@ -1,21 +1,26 @@
+import axios from "axios";
 import { getDatabase, ref, update } from "firebase/database";
-import { auth } from "./firebaseAuth";
+import { auth, url } from "./firebaseAuth";
 
 export let events = [];
 
-export const getUserEventsFromDatabase = () => {
-  fetch(
-    `https://todo-react-21854-default-rtdb.europe-west1.firebasedatabase.app/users/${auth.currentUser.uid}/events.json`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((responseData) => {
-      for (const property in responseData) {
-        events.push(responseData[property]);
-      }
-      return events;
-    });
+export const getEvents = async (currentUserId) => {
+  const { data } = await axios.get(`${url}/users/${currentUserId}/events.json`);
+  return data;
+};
+
+const getClickedEventId = async (clickInfo) => {
+  const eventsObj = await getEvents(auth.currentUser.uid);
+  for (const randomFirebaseId in eventsObj) {
+    if (clickInfo.event.id === eventsObj[randomFirebaseId].id) {
+      return randomFirebaseId;
+    }
+  }
+};
+
+export const removeEventFromFirebase = async (clickInfo) => {
+  const eventId = await getClickedEventId(clickInfo);
+  axios.delete(`${url}/users/${auth.currentUser.uid}/events/${eventId}.json`);
 };
 
 export const writeUserToDb = () => {
@@ -28,35 +33,6 @@ export const writeUserToDb = () => {
   updates["users/" + auth.currentUser.uid] = userData;
 
   return update(ref(db), updates);
-};
-
-export const removeEventFromFirebase = (clickInfo) => {
-  let randomFirebaseId;
-  fetch(
-    `https://todo-react-21854-default-rtdb.europe-west1.firebasedatabase.app/users/${auth.currentUser.uid}/events/.json`
-  )
-    .then((response) => {
-      return response.json();
-    })
-    .then((responseData) => {
-      for (const property in responseData) {
-        if (clickInfo.event.id === responseData[property].id) {
-          randomFirebaseId = property;
-        }
-      }
-      return fetch(
-        `https://todo-react-21854-default-rtdb.europe-west1.firebasedatabase.app/users/${auth.currentUser.uid}/events/${randomFirebaseId}.json`,
-        {
-          method: "DELETE",
-        }
-      );
-    })
-    .then((response) => {
-      return response.json();
-    })
-    .then((responseData) => {
-      console.log(responseData);
-    });
 };
 
 // -----------------------------------------------------------------------------------------

@@ -10,8 +10,9 @@ import { useEffect, useState } from "react";
 import AddEventModal from "../AddEventModal/AddEventModal";
 import { getDatabase, ref, push } from "firebase/database";
 import {
-  removeEventFromFirebase,
   uuidv4,
+  removeEventFromFirebase,
+  getEvents,
 } from "../../firebase/firebaseDatabase";
 
 const Calendar = (props) => {
@@ -25,22 +26,19 @@ const Calendar = (props) => {
   const db = getDatabase();
 
   // -----------------------------------------------------------------------------------
-  // To get logged user Events from DB and show them on calendar right after logging in
-  // -----------------------------------------------------------------------------------
+  // This useEffect down below is to get logged user events from DB
+  //  and show them on calendar right after logging in
+  // ------------------------------------------------------------------------
+
   useEffect(() => {
-    let events = [];
-    fetch(
-      `https://todo-react-21854-default-rtdb.europe-west1.firebasedatabase.app/users/${auth.currentUser.uid}/events.json`
-    )
-      .then((response) => {
-        return response.json();
-      })
-      .then((responseData) => {
-        for (const property in responseData) {
-          events.push(responseData[property]);
-        }
-        setEventsArray(events);
-      });
+    const initializeEvents = async () => {
+      const data = await getEvents(auth.currentUser.uid);
+      for (const randomId in data) {
+        setEventsArray((prevState) => [...prevState, data[randomId]]);
+      }
+    };
+
+    initializeEvents().catch((error) => console.log(error));
   }, [auth.currentUser.uid]);
 
   const toggleWeekendsHandler = () => {
@@ -54,29 +52,26 @@ const Calendar = (props) => {
   const addEventHandler = (selectInfo, reference) => {
     setObjState(selectInfo);
     setAddEventModal(true);
+
     let calendar = selectInfo.view.calendar;
-    console.log(selectInfo);
 
     const randomId = uuidv4();
 
-    console.log(calendar);
+    const obj = {
+      allDay: selectInfo.allDay,
+      end: selectInfo.endStr,
+      id: randomId,
+      start: selectInfo.startStr,
+      title: reference,
+    };
+
     if (reference) {
-      calendar.addEvent({
-        title: reference,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-        id: randomId,
-      });
+      calendar.addEvent(obj);
 
       // Pushing Calendar Events to Database
-      push(ref(db, "users/" + auth.currentUser.uid + "/events"), {
-        title: reference,
-        start: selectInfo.startStr,
-        end: selectInfo.endStr,
-        allDay: selectInfo.allDay,
-        id: randomId,
-      });
+      push(ref(db, "users/" + auth.currentUser.uid + "/events"), obj);
+
+      eventsArray.push(obj);
     }
   };
 
@@ -85,7 +80,8 @@ const Calendar = (props) => {
   };
 
   const removeEventHandler = (clickInfo) => {
-    eventsArray.filter((event) => {
+    console.log(eventsArray);
+    eventsArray.forEach((event) => {
       if (event.id === clickInfo.event.id) {
         removeEventFromFirebase(clickInfo);
         clickInfo.event.remove();

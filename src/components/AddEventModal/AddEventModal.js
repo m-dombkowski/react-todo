@@ -8,7 +8,7 @@ const AddEventModal = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
     ref = addEventRef.current.value;
-    console.log(ref);
+
     props.handler(props.obj, ref);
     props.onClose();
   };

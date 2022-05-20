@@ -1,3 +1,4 @@
+import axios from "axios";
 import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
@@ -22,3 +23,10 @@ const app = initializeApp({
 
 // Initialize Firebase Authentication and get a reference to the service
 export const auth = getAuth(app);
+export const url = app._options.databaseURL;
+
+// const AXIOS_INSTANCE = axios.create({
+//   baseURL: "https://some-domain.com/api/",
+//   timeout: 1000,
+//   headers: { "X-Custom-Header": "foobar" },
+// });
