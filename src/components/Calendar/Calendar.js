@@ -71,6 +71,8 @@ const Calendar = (props) => {
       // Pushing Calendar Events to Database
       push(ref(db, "users/" + auth.currentUser.uid + "/events"), obj);
 
+      // Pushing event to the array so I can delete it without reloading the page
+      // Basically updating main array
       eventsArray.push(obj);
     }
   };
@@ -80,10 +82,9 @@ const Calendar = (props) => {
   };
 
   const removeEventHandler = (clickInfo) => {
-    console.log(eventsArray);
     eventsArray.forEach((event) => {
       if (event.id === clickInfo.event.id) {
-        removeEventFromFirebase(clickInfo);
+        removeEventFromFirebase(clickInfo).catch((err) => console.log(err));
         clickInfo.event.remove();
       }
     });

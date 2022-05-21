@@ -11,11 +11,22 @@ export const getEvents = async (currentUserId) => {
 
 const getClickedEventId = async (clickInfo) => {
   const eventsObj = await getEvents(auth.currentUser.uid);
+
   for (const randomFirebaseId in eventsObj) {
     if (clickInfo.event.id === eventsObj[randomFirebaseId].id) {
       return randomFirebaseId;
     }
   }
+
+  // -------------------------------------------------------
+  // Alternative way of getting this Id with 'Object.keys.find' loop |
+  // -------------------------------------------------------
+
+  // const idImLookingForOrUndefined = Object.keys(eventsObj).find(
+  //   (element) => eventsObj[element].id === clickInfo.event.id
+  // );
+  // console.log(idImLookingForOrUndefined);
+  // return idImLookingForOrUndefined;
 };
 
 export const removeEventFromFirebase = async (clickInfo) => {
