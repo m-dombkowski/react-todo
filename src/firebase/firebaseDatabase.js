@@ -19,7 +19,7 @@ const getClickedEventId = async (clickInfo) => {
   }
 
   // -------------------------------------------------------
-  // Alternative way of getting this Id with 'Object.keys.find' loop |
+  // Alternative way of getting this Id with 'Object.keys.find' |
   // -------------------------------------------------------
 
   // const idImLookingForOrUndefined = Object.keys(eventsObj).find(
