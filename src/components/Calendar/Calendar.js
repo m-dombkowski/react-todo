@@ -102,11 +102,13 @@ const Calendar = (props) => {
           onClose={closeModalHandler}
         />
       )}
+
       <CalendarSideBar
         onChangeWeekend={toggleWeekendsHandler}
         weekendState={toggleWeekends}
         onChangeWeekNumber={toggleWeekNumbersHandler}
         weekNumberState={toggleWeekNumber}
+        events={eventsArray}
       />
       <div className={classes.calendar}>
         <FullCalendar

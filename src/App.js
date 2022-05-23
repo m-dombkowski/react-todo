@@ -5,13 +5,18 @@ import Navigation from "./ui/Navigation/Navigation";
 import Footer from "./ui/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import { Fragment } from "react";
+import { Fragment, useContext } from "react";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import WelcomePage from "./pages/MainPage/MainPage";
-import UserPanel from "./components/UserPanel/UserPanel";
+
 import AuthenticationModal from "./components/ReAuthenticateUserModal/AuthenticationModal";
+import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
+import UserContext from "./context/user-context";
 
 function App() {
+  const userContext = useContext(UserContext);
+  console.log(userContext);
+
   return (
     <Fragment>
       <Navigation />
@@ -19,11 +24,11 @@ function App() {
         <Route path="/" element={<WelcomePage replace to="/welcome" />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
-        <Route path="settings" element={<UserPanel />}>
+        <Route path="settings" element={<UserSettingsPage />}>
           <Route path="reauthenticate" element={<AuthenticationModal />} />
         </Route>
       </Routes>
-      {/* <Footer /> */}
+      {!userContext.isLoggedIn && <Footer />}
     </Fragment>
   );
 }

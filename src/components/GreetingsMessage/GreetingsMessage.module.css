@@ -6,8 +6,89 @@
   font-size: 56px;
   display: flex;
   justify-content: center;
+  margin: 100px 0;
 }
+
+p {
+  margin: 0;
+}
+
+.messageContainer {
+  margin: 0 400px;
+}
+
+.mainMessage {
+  line-height: 1.8;
+  font-size: 22px;
+  margin-bottom: 40px;
+}
+
+.reactAnchor,
+.calendarAnchor {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  transition: all 0.3s;
+}
+
+.reactAnchor:hover,
+.calendarAnchor:hover {
+  color: #0097e6;
+}
+
+.thanksMessage {
+  font-size: 22px;
+  margin-bottom: 40px;
+}
+
+.loginButtonContainer {
+  margin-bottom: 40px;
+}
+
 .login {
-  font-size: 20px;
+  font-size: 26px;
   padding: 12px 24px;
+  color: inherit;
+  border-radius: 99px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: all 0.3s;
+  position: relative;
+}
+
+.login::after {
+  font-size: 38px;
+  position: absolute;
+  content: "←";
+  opacity: 0;
+  left: 150px;
+  bottom: 7px;
+  transition: all 0.3s;
+}
+.login::before {
+  font-size: 38px;
+  position: absolute;
+  content: "→";
+  opacity: 0;
+  right: 150px;
+  bottom: 7px;
+  transition: all 0.3s;
+}
+
+.login:hover {
+  background-color: #000;
+  color: #fff;
+  padding: 12px 48px;
+}
+
+.login:hover::after {
+  left: 125px;
+  opacity: 1;
+  color: #fff;
+}
+
+.login:hover::before {
+  right: 125px;
+  opacity: 1;
+  color: #fff;
 }

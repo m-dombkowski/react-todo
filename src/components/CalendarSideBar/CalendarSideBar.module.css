@@ -9,3 +9,22 @@
   /* display: flex;
   flex-direction: column; */
 }
+
+.eventsSideList {
+  list-style: none;
+  padding-left: 0;
+  overflow-y: auto;
+  height: 500px;
+}
+
+.eventsItem {
+  margin-bottom: 10px;
+}
+
+.dateText {
+  font-weight: bold;
+}
+
+.dateTitle {
+  font-style: italic;
+}

@@ -4,7 +4,17 @@ const Footer = () => {
   return (
     <footer className={classes.footer}>
       <div className={classes.footerTextContainer}>
-        <p>Made with love by Mati</p>
+        <p className={classes.message}>Made by Mateusz Dombkowski © 2022.</p>
+        <a
+          href="https://mateuszdombkowski.netlify.app/index.html"
+          className={classes.anchor}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {" "}
+          {}
+          {" "}
+        </a>
       </div>
     </footer>
   );
