@@ -6,7 +6,7 @@ import listPlugin from "@fullcalendar/list";
 import { getAuth } from "firebase/auth";
 import classes from "./Calendar.module.css";
 import CalendarSideBar from "../CalendarSideBar/CalendarSideBar";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import AddEventModal from "../AddEventModal/AddEventModal";
 import { getDatabase, ref, push } from "firebase/database";
 import {
@@ -14,6 +14,7 @@ import {
   removeEventFromFirebase,
   getEvents,
 } from "../../firebase/firebaseDatabase";
+import { auth } from "../../firebase/firebaseAuth";
 
 const Calendar = (props) => {
   const [toggleWeekends, setToggleWeekends] = useState(true);
@@ -22,7 +23,6 @@ const Calendar = (props) => {
   const [addEventModal, setAddEventModal] = useState(false);
   const [eventsArray, setEventsArray] = useState([]);
 
-  const auth = getAuth();
   const db = getDatabase();
 
   // -----------------------------------------------------------------------------------
@@ -39,7 +39,7 @@ const Calendar = (props) => {
     };
 
     initializeEvents().catch((error) => console.log(error));
-  }, [auth.currentUser.uid]);
+  }, []);
 
   const toggleWeekendsHandler = () => {
     setToggleWeekends((prevState) => !prevState);
@@ -67,6 +67,7 @@ const Calendar = (props) => {
 
     if (reference) {
       calendar.addEvent(obj);
+      console.log("test");
 
       // Pushing Calendar Events to Database
       push(ref(db, "users/" + auth.currentUser.uid + "/events"), obj);
@@ -75,6 +76,7 @@ const Calendar = (props) => {
       // Basically updating main array
       eventsArray.push(obj);
     }
+    console.log(eventsArray);
   };
 
   const closeModalHandler = () => {

@@ -1,4 +1,3 @@
-import { formatDate } from "@fullcalendar/react";
 import classes from "./CalendarSideBar.module.css";
 
 const CalendarSideBar = (props) => {
@@ -29,23 +28,6 @@ const CalendarSideBar = (props) => {
             {props.weekNumberState ? "Hide Week Number" : "Show Week Number "}
           </button>
         </div>
-      </section>
-      <section>
-        <h2>Your Events</h2>
-        <ul className={classes.eventsSideList}>
-          {props.events.map((event) => (
-            <li className={classes.eventsItem} key={event.id}>
-              <span className={classes.dateText}>
-                {formatDate(event.start, {
-                  year: "numeric",
-                  month: "long",
-                  day: "numeric",
-                })}
-              </span>
-              <span className={classes.dateTitle}>, {event.title}</span>
-            </li>
-          ))}
-        </ul>
       </section>
     </div>
   );

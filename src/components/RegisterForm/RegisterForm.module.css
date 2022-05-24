@@ -1,14 +1,150 @@
+.passwordInput {
+  display: grid;
+}
+
 .formContainer {
   display: flex;
-  align-items: center;
-  flex-direction: column;
+  justify-content: center;
+  margin-top: 100px;
+  height: 65vh;
 }
-.emailInput {
-  display: grid;
-  /* margin: 20px 0px 0px 0px; */
-  margin: 20px 0;
+
+.photoSection {
+  height: inherit;
+  box-shadow: 18px 6px 15px -10px rgb(66 68 90);
+}
+
+.img {
+  height: inherit;
+  justify-self: end;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.registerForm {
+  width: 250px;
+  padding: 120px 172px 120px 150px;
+  background-image: linear-gradient(
+    135deg,
+    rgba(223, 249, 251, 1) 20%,
+    #f9edaf 100%
+  );
+  box-shadow: 6px 6px 15px -10px rgb(66 68 90);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.registerFormTitle {
+  font-size: 32px;
+  text-align: center;
+}
+
+.registerFormTitleInstruction {
+  font-size: 22px;
+  text-align: center;
+}
+
+.emailInputContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 60px 0 30px 0;
+}
+
+.passwordInputContainer {
+  flex-direction: column;
+  display: flex;
+  margin-bottom: 60px;
+}
+
+.emailLabel,
+.passwordLabel {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.emailInput,
+.passwordInput {
+  padding: 10px 0 10px 10px;
+  width: 230px;
+  border: 1px solid #999;
+  border-radius: 5px;
 }
 
 .passwordInput {
-  display: grid;
+  margin-bottom: 5px;
+}
+
+.passwordInfo {
+  font-size: 14px;
+  font-weight: lighter;
+}
+
+.registerButton {
+  background: #fff;
+  color: #000;
+  padding: 12px 32px;
+  font-size: 18px;
+  border: none;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.2s;
+  box-shadow: 3px 3px 8px -3px rgb(66 68 90);
+}
+
+.registerButton:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.registerControlButtons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 60px;
+  gap: 45px;
+}
+.redirectLogin {
+  position: relative;
+}
+
+.redirectLogin::after,
+.redirectLogin::before {
+  position: absolute;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  color: #000;
+  transition: all 0.3s;
+}
+
+.redirectLogin::after {
+  content: "Already have account?";
+  left: -119px;
+  padding: 12px 24px;
+  width: 190px;
+  border: 1px solid transparent;
+}
+
+.redirectLogin::before {
+  content: "Sign in!";
+  /* top: 50px; */
+  left: 100px;
+  opacity: 0;
+  padding: 12px 16px;
+  width: 150px;
+  background-color: #f5f5f5;
+  border: 1px solid #c4c4c4;
+}
+
+.redirectLogin:hover::after {
+  /* left: -300px; */
+  opacity: 0;
+}
+
+.redirectLogin:hover::before {
+  top: 0;
+  opacity: 1;
+  left: -90px;
+  /* border: none; */
+  border-radius: 10px;
 }

@@ -1,5 +1,7 @@
+import classes from "./LoginErrorModal.module.css";
+
 const LoginErrorModal = (props) => {
-  return <div>{props.error}</div>;
+  return <p className={classes.errorMessage}>{props.error}</p>;
 };
 
 export default LoginErrorModal;

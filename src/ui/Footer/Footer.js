@@ -6,14 +6,12 @@ const Footer = () => {
       <div className={classes.footerTextContainer}>
         <p className={classes.message}>Made by Mateusz Dombkowski © 2022.</p>
         <a
-          href="https://mateuszdombkowski.netlify.app/index.html"
+          href="https://mateuszdombkowski.netlify.app/"
           className={classes.anchor}
           target="_blank"
           rel="noreferrer"
         >
-          {" "}
-          {}
-          {" "}
+          My Website
         </a>
       </div>
     </footer>

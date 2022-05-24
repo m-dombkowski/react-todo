@@ -4,7 +4,7 @@ import classes from "./LoginForm.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebaseAuth";
 import LoginValidation from "../../validation/LoginValidation";
-import { getUserEventsFromDatabase } from "../../firebase/firebaseDatabase";
+import img from "../../assets/beachWithMountains.jpg";
 
 const LoginForm = () => {
   const [errorStatus, setErrorStatus] = useState(false);
@@ -32,19 +32,45 @@ const LoginForm = () => {
 
   return (
     <div className={classes.formContainer}>
-      <form onSubmit={loginFormHandler}>
-        <div className={classes.emailInput}>
-          <label htmlFor="email">Email</label>
-          <input ref={emailInputRef} type="email" id="email"></input>
+      <div className={classes.photoSection}>
+        <img
+          className={classes.img}
+          src={img}
+          alt="sand beach with mountains and sea in the background"
+        />
+      </div>
+      <form onSubmit={loginFormHandler} className={classes.loginForm}>
+        <h1 className={classes.loginFormTitle}>Sign in here!</h1>
+        <div className={classes.emailInputContainer}>
+          <label className={classes.emailLabel} htmlFor="email">
+            Email
+          </label>
+          <input
+            className={classes.emailInput}
+            ref={emailInputRef}
+            type="email"
+            id="email"
+            placeholder="example@example.org"
+          ></input>
         </div>
-        <div className={classes.passwordInput}>
-          <label htmlFor="password">Password</label>
-          <input ref={passwordInputRef} type="password" id="password"></input>
+        <div className={classes.passwordInputContainer}>
+          <label className={classes.passwordLabel} htmlFor="password">
+            Password
+          </label>
+          <input
+            className={classes.passwordInput}
+            ref={passwordInputRef}
+            type="password"
+            id="password"
+            placeholder="Your password"
+          ></input>
         </div>
         {errorStatus && <LoginValidation errorState={errorMessage} />}
         <div className={classes.loginControlButtons}>
-          <button type="submit">Login</button>
-          <Link to="/register">No account? Sign up!</Link>
+          <button className={classes.login} type="submit">
+            Login
+          </button>
+          <Link className={classes.redirectRegister} to="/register"></Link>
         </div>
       </form>
     </div>

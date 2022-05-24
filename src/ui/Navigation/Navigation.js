@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../../components/LogoutButton/LogoutButton";
 import SignedUser from "../../components/SignedUser/SignedUser";
-import UserPanel from "../../components/UserPanel/UserPanel";
 import UserContext from "../../context/user-context";
 
 import classes from "./Navigation.module.css";

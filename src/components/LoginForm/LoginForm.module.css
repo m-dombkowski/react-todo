@@ -1,15 +1,62 @@
 .formContainer {
   display: flex;
   justify-content: center;
+  margin-top: 100px;
+  height: 65vh;
 }
 
-.emailInput {
-  display: grid;
-  margin: 20px 0 10px 0;
+.photoSection {
+  height: inherit;
+  box-shadow: 18px 6px 15px -10px rgb(66 68 90);
 }
 
+.img {
+  height: inherit;
+  justify-self: end;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+.loginForm {
+  width: 250px;
+  padding: 120px 172px 120px 150px;
+  background-image: linear-gradient(
+    135deg,
+    rgba(223, 249, 251, 1) 20%,
+    #f9edaf 100%
+  );
+  box-shadow: 6px 6px 15px -10px rgb(66 68 90);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+.loginFormTitle {
+  text-align: center;
+}
+
+.emailInputContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 60px 0 30px 0;
+}
+
+.emailLabel,
+.passwordLabel {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.emailInput,
 .passwordInput {
-  display: grid;
+  padding: 10px 0 10px 10px;
+  width: 250px;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+.passwordInputContainer {
+  flex-direction: column;
+  display: flex;
   margin-bottom: 20px;
 }
 
@@ -17,4 +64,65 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 60px;
+  gap: 45px;
+}
+
+.login {
+  background: #fff;
+  color: #000;
+  padding: 12px 32px;
+  font-size: 18px;
+  border: none;
+  text-decoration: none;
+  border-radius: 10px;
+  transition: all 0.2s;
+  box-shadow: 3px 3px 8px -3px rgb(66 68 90);
+}
+
+.login:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.redirectRegister {
+  position: relative;
+}
+
+.redirectRegister::after,
+.redirectRegister::before {
+  position: absolute;
+  font-size: 18px;
+  width: 150px;
+  transition: all 0.3s;
+  font-weight: bold;
+  text-align: center;
+  padding: 12px 24px;
+  top: -15px;
+  color: #000;
+}
+
+.redirectRegister::after {
+  left: -100px;
+  content: "No account?";
+  border: 1px solid transparent;
+}
+
+.redirectRegister::before {
+  left: 100px;
+  opacity: 0;
+  content: "Register Now!";
+  border: 1px solid #c4c4c4;
+}
+
+.redirectRegister:hover::after {
+  /* left: -150px; */
+  opacity: 0;
+}
+
+.redirectRegister:hover:before {
+  left: -100px;
+  opacity: 1;
+  border-radius: 10px;
+  background-color: #f5f5f5;
 }
