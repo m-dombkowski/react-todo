@@ -3,10 +3,9 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import listPlugin from "@fullcalendar/list";
-import { getAuth } from "firebase/auth";
 import classes from "./Calendar.module.css";
 import CalendarSideBar from "../CalendarSideBar/CalendarSideBar";
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import AddEventModal from "../AddEventModal/AddEventModal";
 import { getDatabase, ref, push } from "firebase/database";
 import {
@@ -67,7 +66,6 @@ const Calendar = (props) => {
 
     if (reference) {
       calendar.addEvent(obj);
-      console.log("test");
 
       // Pushing Calendar Events to Database
       push(ref(db, "users/" + auth.currentUser.uid + "/events"), obj);
@@ -76,7 +74,6 @@ const Calendar = (props) => {
       // Basically updating main array
       eventsArray.push(obj);
     }
-    console.log(eventsArray);
   };
 
   const closeModalHandler = () => {
