@@ -1,10 +1,11 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./LoginForm.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase/firebaseAuth";
 import LoginValidation from "../../validation/LoginValidation";
 import img from "../../assets/beachWithMountains.jpg";
+import { setPersistence, browserSessionPersistence } from "firebase/auth";
 
 const LoginForm = () => {
   const [errorStatus, setErrorStatus] = useState(false);
@@ -24,6 +25,22 @@ const LoginForm = () => {
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       setErrorStatus(false);
       navigate("/");
+      setPersistence(auth, browserSessionPersistence)
+        .then(() => {
+          // Existing and future Auth states are now persisted in the current
+          // session only. Closing the window would clear any existing state even
+          // if a user forgets to sign out.
+          // ...
+          // New sign-in will be persisted with session persistence.
+          return signInWithEmailAndPassword(auth, loginEmail, loginPassword);
+        })
+        .catch((error) => {
+          // Handle Errors here.
+          const errorCode = error.code;
+          console.log(errorCode);
+          const errorMessage = error.message;
+          console.log(errorMessage);
+        });
     } catch (error) {
       setErrorStatus(true);
       setErrorMessage(error);
