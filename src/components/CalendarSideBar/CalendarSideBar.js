@@ -4,8 +4,8 @@ const CalendarSideBar = (props) => {
   return (
     <div className={classes.sideBar}>
       <section className={classes.instructionSection}>
-        <h2>Instruction</h2>
-        <ul>
+        <h2 className={classes.instructionTitle}>Instruction</h2>
+        <ul className={classes.instructionList}>
           <li>Click on a date to add event</li>
           <li>
             You can also drag through multiple days/hours to add longer event
@@ -18,13 +18,21 @@ const CalendarSideBar = (props) => {
           </li>
         </ul>
       </section>
-      <section>
-        <h2>Helpers</h2>
+      <section className={classes.helperSection}>
+        <h2 className={classes.helperTitle}>Helpers</h2>
         <div className={classes.helperButtons}>
-          <button type="button" onClick={props.onChangeWeekend}>
+          <button
+            type="button"
+            className={classes.toggleWeekends}
+            onClick={props.onChangeWeekend}
+          >
             {props.weekendState ? "Hide Weekends" : "Show Weekends"}
           </button>
-          <button type="button" onClick={props.onChangeWeekNumber}>
+          <button
+            type="button"
+            className={classes.toggleWeekNumbers}
+            onClick={props.onChangeWeekNumber}
+          >
             {props.weekNumberState ? "Hide Week Number" : "Show Week Number "}
           </button>
         </div>

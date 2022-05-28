@@ -1,10 +1,11 @@
 .calendar {
-  padding: 50px 100px;
+  padding: 50px 50px 50px 50px;
+  height: vh;
 }
 
 .pageContainer {
   display: grid !important;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1fr 3.5fr;
 }
 
 .modalOpen {

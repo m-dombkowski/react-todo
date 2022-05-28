@@ -19,11 +19,12 @@
 
 .loginForm {
   width: 250px;
-  padding: 120px 172px 120px 150px;
+  padding: 80px 172px 120px 150px;
   background-image: linear-gradient(
     135deg,
-    rgba(223, 249, 251, 1) 20%,
-    #f9edaf 100%
+    rgba(223, 249, 251, 1) 0%,
+    rgba(255, 234, 167, 1) 50%,
+    rgba(223, 249, 251, 1) 100%
   );
   box-shadow: 6px 6px 15px -10px rgb(66 68 90);
   border-top-right-radius: 10px;
@@ -104,7 +105,7 @@
 
 .redirectRegister::after {
   left: -100px;
-  content: "No account?";
+  content: "No account yet?";
   border: 1px solid transparent;
 }
 

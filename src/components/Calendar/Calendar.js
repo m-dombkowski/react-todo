@@ -132,7 +132,7 @@ const Calendar = (props) => {
           weekNumbers={toggleWeekNumber}
           eventClick={removeEventHandler}
           events={eventsArray}
-          height="85vh"
+          height="86vh"
         />
       </div>
     </div>
