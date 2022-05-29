@@ -1,6 +1,5 @@
 .calendar {
-  padding: 50px 50px 50px 50px;
-  height: vh;
+  padding: 35px 50px;
 }
 
 .pageContainer {
@@ -9,10 +8,6 @@
 }
 
 .modalOpen {
-  /* opacity: 10%; */
-  /* z-index: 0; */
   display: grid !important;
-  grid-template-columns: 1fr 4fr;
-
-  /* -webkit-backdrop-filter: blur(10px); */
+  grid-template-columns: 1fr 3.5fr;
 }

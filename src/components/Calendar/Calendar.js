@@ -92,7 +92,6 @@ const Calendar = (props) => {
   return (
     <div
       className={`${addEventModal ? classes.modalOpen : classes.pageContainer}`}
-      // className={classes.pageContainer}
     >
       {addEventModal && (
         <AddEventModal
@@ -132,7 +131,7 @@ const Calendar = (props) => {
           weekNumbers={toggleWeekNumber}
           eventClick={removeEventHandler}
           events={eventsArray}
-          height="86vh"
+          height="89vh"
         />
       </div>
     </div>

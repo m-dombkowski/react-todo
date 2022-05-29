@@ -19,7 +19,7 @@ const CalendarSideBar = (props) => {
         </ul>
       </section>
       <section className={classes.helperSection}>
-        <h2 className={classes.helperTitle}>Helpers</h2>
+        <h2 className={classes.helperTitle}>Visibility</h2>
         <div className={classes.helperButtons}>
           <button
             type="button"

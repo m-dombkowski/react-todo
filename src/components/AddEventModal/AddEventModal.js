@@ -15,13 +15,33 @@ const AddEventModal = (props) => {
 
   return (
     <div className={classes.modal}>
-      <form className={classes.modalForm} onSubmit={submitHandler}>
-        <button type="button" onClick={props.onClose}>
-          Close
+      <div className={classes.modalHeader}>
+        <button
+          className={classes.closeModal}
+          type="button"
+          onClick={props.onClose}
+          title="Close Window"
+        >
+          x
         </button>
-        <label>Add Event Title</label>
-        <input ref={addEventRef} type="text"></input>
-        <button type="submit">Add</button>
+        <h2 className={classes.modalTitle}>Create Event</h2>
+      </div>
+      <form className={classes.modalForm} onSubmit={submitHandler}>
+        <label className={classes.inputLabel}>Your Event Title</label>
+        <input
+          className={classes.modalInput}
+          ref={addEventRef}
+          type="text"
+          placeholder="Title"
+        ></input>
+        <div>
+          <button className={classes.addEventButton} type="submit">
+            Add
+          </button>
+          <button className={classes.clearButton} type="reset">
+            Clear
+          </button>
+        </div>
       </form>
     </div>
   );
