@@ -2,7 +2,7 @@
   position: absolute;
   top: 35%;
   left: 45%;
-  z-index: 9999999;
+  z-index: 999;
   border-radius: 20px;
   background-color: #fff2ec;
   border: 1px solid #dfdfe0;
@@ -55,6 +55,7 @@
 .inputLabel {
   margin-bottom: 10px;
   font-weight: 500;
+  font-size: 20px;
 }
 
 .modalInput {
@@ -62,15 +63,17 @@
   border: 1px solid #999;
   border-radius: 5px;
   width: 200px;
+  font-size: 16px;
 }
 
 .addEventButton,
 .clearButton {
   padding: 8px 16px;
   border-radius: 10px;
+  font-size: 16px;
   border: none;
   background-color: #fff;
-  box-shadow: -3px 3px 8px -3px rgb(66 68 90);
+  box-shadow: 3px 3px 8px -3px rgb(66 68 90);
   transition: all 0.3s;
 }
 

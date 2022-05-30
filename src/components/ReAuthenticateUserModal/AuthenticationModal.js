@@ -1,33 +1,49 @@
-import { Fragment, useRef } from "react";
-import { EmailAuthProvider, reauthenticateWithCredential } from "firebase/auth";
-import { auth } from "../../firebase/firebaseAuth";
-import { useState } from "react";
+import { Fragment, useRef, useState } from "react";
+import {
+  EmailAuthProvider,
+  getAuth,
+  reauthenticateWithCredential,
+} from "firebase/auth";
+
+import classes from "./AuthenticationModal.module.css";
 
 const AuthenticationModal = (props) => {
-  const emailRef = useRef();
+  
   const passwordRef = useRef();
-  const [successMessage, setSuccessMessage] = useState("");
-  const [success, setSuccess] = useState(null);
+  const auth = getAuth();
+
   const [error, setError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
 
   const reAuthenticateHandler = (event) => {
+    setErrorMsg("");
     event.preventDefault();
-    const emailInput = emailRef.current.value;
     const passwordInput = passwordRef.current.value;
 
-    const credential = EmailAuthProvider.credential(emailInput, passwordInput);
+    const credential = EmailAuthProvider.credential(
+      auth.currentUser.email,
+      passwordInput
+    );
+
+    console.log(credential._password);
 
     reauthenticateWithCredential(auth.currentUser, credential)
       .then(() => {
-        setSuccess(true);
-        setSuccessMessage(`Email address updated, new email ${emailInput}`);
+        props.showForm(false);
+        props.reAuth(true);
+        props.reAuthMessage("Re-authenticated successfully!");
         setError(false);
       })
       .catch((error) => {
         setError(true);
         console.log(error.code);
         switch (error.code) {
+          case "auth/wrong-password":
+            setErrorMsg("Wrong password");
+            break;
+          case "auth/internal-error":
+            setErrorMsg(`Can't leave empty fields`);
+            break;
           case "auth/user-mismatch":
             setErrorMsg("Wrong credentials, please check email and password");
             break;
@@ -39,21 +55,30 @@ const AuthenticationModal = (props) => {
 
   return (
     <Fragment>
-      <form onSubmit={reAuthenticateHandler}>
-        <p>
-          You were logged in for too long, please pass your current credentials
+      <form className={classes.modalForm} onSubmit={reAuthenticateHandler}>
+        <p className={classes.title}>You were logged in for too long!</p>
+        <p className={classes.message}>
+          {" "}
+          In order to re-authenticate please pass your current credentials
         </p>
-        <label htmlFor="authenticationEmailInput">Current Email</label>
-        <input ref={emailRef} id="authenticationEmailInput" type="email" />
-        <label htmlFor="authenticationPasswordInput">Current Password</label>
+
+        <label
+          className={classes.passwordLabel}
+          htmlFor="authenticationPasswordInput"
+        >
+          Current Password
+        </label>
         <input
+          className={classes.passwordInput}
           ref={passwordRef}
           id="authenticationPasswordInput"
           type="password"
+          placeholder="Password"
         />
-        <button type="submit">Send</button>
-        {success && <p>{successMessage}</p>}
-        {error && <p>{errorMsg}</p>}
+        {error && <p className={classes.errorMessage}>{errorMsg}</p>}
+        <button className={classes.reAuthButton} type="submit">
+          Send
+        </button>
       </form>
     </Fragment>
   );

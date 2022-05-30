@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import LogoutButton from "../../components/LogoutButton/LogoutButton";
 import SignedUser from "../../components/SignedUser/SignedUser";
+import SettingsMenuContext from "../../context/settingsMenu-context";
 import UserContext from "../../context/user-context";
 
 import classes from "./Navigation.module.css";
@@ -9,6 +10,8 @@ import classes from "./Navigation.module.css";
 const Navigation = () => {
   const userContext = useContext(UserContext);
   const isLoggedIn = userContext.isLoggedIn;
+  const menuContext = useContext(SettingsMenuContext);
+  const showMenu = menuContext.showMenu;
 
   return (
     <header className={classes.header}>
@@ -26,7 +29,11 @@ const Navigation = () => {
           <div className={classes.userControlContainer}>
             <div>
               {isLoggedIn && (
-                <NavLink className={classes.settings} to="/settings">
+                <NavLink
+                  onClick={showMenu}
+                  className={classes.settings}
+                  to="/settings"
+                >
                   {" "}
                   Settings{" "}
                 </NavLink>

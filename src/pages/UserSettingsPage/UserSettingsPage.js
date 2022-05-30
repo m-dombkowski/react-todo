@@ -1,7 +1,7 @@
-import UserPanel from "../../components/UserPanel/UserPanel";
+import UserSettings from "../../components/UserSettings/UserSettings";
 
 const UserSettingsPage = () => {
-  return <UserPanel />;
+  return <UserSettings />;
 };
 
 export default UserSettingsPage;

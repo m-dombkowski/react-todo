@@ -1,0 +1,82 @@
+.formContainer {
+  border: 1px solid #dfdfe0;
+  width: 550px;
+  height: 300px;
+  position: relative;
+  border-radius: 20px;
+  box-shadow: -3px 3px 7px -3px rgb(66 68 90);
+  background-color: #fff2ec;
+}
+
+.emailChangeTitle {
+  height: 50px;
+  border-bottom: 1px solid #868686;
+  text-align: center;
+}
+
+.formHeader {
+  position: relative;
+}
+
+.settingsForm {
+  display: flex;
+  flex-direction: column;
+  padding: 0 25%;
+  align-items: flex-start;
+  flex-grow: 0;
+  margin-top: 35px;
+}
+
+.emailLabel {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.emailInput {
+  width: 250px;
+  padding: 10px;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+.changeEmailButton {
+  padding: 8px 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: #fff;
+  box-shadow: -3px 3px 8px -3px rgb(66 68 90);
+  transition: all 0.3s;
+  font-size: 16px;
+}
+
+.changeEmailButton:hover {
+  background-color: #f5f5f5;
+  cursor: pointer;
+}
+
+.goBackButton {
+  position: absolute;
+  top: -10px;
+  left: 20px;
+
+  padding: 6px 14px;
+  font-size: 24px;
+  text-decoration: none;
+  border-radius: 50%;
+  border: 1px solid #868686;
+  transition: all 0.3s;
+}
+
+.goBackButton:hover {
+  border: 1px solid transparent;
+  background-color: #f0aaaa;
+}
+
+.successfulMessage,
+.redirectAnnouncement {
+  font-size: 16px;
+}
+
+.successfulMessage {
+  margin-top: 50px;
+}

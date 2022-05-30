@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import classes from "./LoginForm.module.css";
 import { signInWithEmailAndPassword } from "firebase/auth";
@@ -22,6 +22,7 @@ const LoginForm = () => {
     const loginPassword = passwordInputRef.current.value;
 
     try {
+      setErrorMessage("");
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
       setErrorStatus(false);
       navigate("/");
