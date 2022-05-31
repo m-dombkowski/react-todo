@@ -1,10 +1,10 @@
 .formContainer {
   border: 1px solid #dfdfe0;
   width: 550px;
-  height: 300px;
+  height: 280px;
   position: relative;
   border-radius: 20px;
-  box-shadow: -3px 3px 7px -3px rgb(66 68 90);
+  box-shadow: 2px 2px 8px -3px rgb(66 68 90);
   background-color: #fff2ec;
 }
 
@@ -23,8 +23,8 @@
   flex-direction: column;
   padding: 0 25%;
   align-items: flex-start;
-  flex-grow: 0;
   margin-top: 35px;
+  position: relative;
 }
 
 .emailLabel {
@@ -36,7 +36,21 @@
   width: 250px;
   padding: 10px;
   font-size: 16px;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
+  border: 1px solid #999;
+  border-radius: 5px;
+}
+
+.errorMessage {
+  background-color: #ea2027;
+  font-weight: bold;
+  margin-top: 80px;
+  text-align: center;
+  font-size: 18px;
+  border-radius: 15px;
+  box-shadow: 2px 2px 8px -3px rgb(66 68 90);
+  padding: 15px 10px;
+  width: 250px;
 }
 
 .changeEmailButton {
@@ -44,7 +58,7 @@
   border-radius: 10px;
   border: none;
   background-color: #fff;
-  box-shadow: -3px 3px 8px -3px rgb(66 68 90);
+  box-shadow: 2px 2px 8px -3px rgb(66 68 90);
   transition: all 0.3s;
   font-size: 16px;
 }
@@ -71,6 +85,13 @@
   border: 1px solid transparent;
   background-color: #f0aaaa;
 }
+.successMessageContainer {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
 .successfulMessage,
 .redirectAnnouncement {
@@ -78,5 +99,36 @@
 }
 
 .successfulMessage {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: 18px;
+  border-radius: 15px;
+  background-color: #0dfb43;
+  box-shadow: 2px 2px 8px -3px rgb(66 68 90);
+  padding: 10px 15px;
+}
+
+.redirectAnnouncement {
+  text-align: center;
+  font-size: 18px;
+}
+
+.reAuthContainer {
+  border-radius: 15px;
+  background-color: #0dfb43;
+  box-shadow: 2px 2px 8px -3px rgb(66 68 90);
+  margin: 0 20%;
+  padding: 20px;
   margin-top: 50px;
+}
+
+.reAuthMessage {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+
+  font-size: 18px;
+  text-align: center;
+
+  font-weight: bold;
 }

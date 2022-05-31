@@ -8,7 +8,6 @@ import {
 import classes from "./AuthenticationModal.module.css";
 
 const AuthenticationModal = (props) => {
-  
   const passwordRef = useRef();
   const auth = getAuth();
 
@@ -16,6 +15,7 @@ const AuthenticationModal = (props) => {
   const [errorMsg, setErrorMsg] = useState("");
 
   const reAuthenticateHandler = (event) => {
+    setError(false);
     setErrorMsg("");
     event.preventDefault();
     const passwordInput = passwordRef.current.value;
@@ -24,8 +24,6 @@ const AuthenticationModal = (props) => {
       auth.currentUser.email,
       passwordInput
     );
-
-    console.log(credential._password);
 
     reauthenticateWithCredential(auth.currentUser, credential)
       .then(() => {
@@ -42,7 +40,7 @@ const AuthenticationModal = (props) => {
             setErrorMsg("Wrong password");
             break;
           case "auth/internal-error":
-            setErrorMsg(`Can't leave empty fields`);
+            setErrorMsg(`Can't leave empty field`);
             break;
           case "auth/user-mismatch":
             setErrorMsg("Wrong credentials, please check email and password");
@@ -54,12 +52,14 @@ const AuthenticationModal = (props) => {
   };
 
   return (
-    <Fragment>
-      <form className={classes.modalForm} onSubmit={reAuthenticateHandler}>
+    <div className={classes.formContainer}>
+      <div className={classes.modalHeader}>
         <p className={classes.title}>You were logged in for too long!</p>
+      </div>
+      <form className={classes.modalForm} onSubmit={reAuthenticateHandler}>
         <p className={classes.message}>
           {" "}
-          In order to re-authenticate please pass your current credentials
+          In order to re-authenticate you need to log in again.
         </p>
 
         <label
@@ -75,12 +75,13 @@ const AuthenticationModal = (props) => {
           type="password"
           placeholder="Password"
         />
-        {error && <p className={classes.errorMessage}>{errorMsg}</p>}
+
         <button className={classes.reAuthButton} type="submit">
           Send
         </button>
+        {error && <p className={classes.errorMessage}>{errorMsg}</p>}
       </form>
-    </Fragment>
+    </div>
   );
 };
 
