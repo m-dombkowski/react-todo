@@ -18,7 +18,11 @@ const Navigation = () => {
       <nav className={classes.nav}>
         <ul className={classes.list}>
           <li>
-            <NavLink className={classes.naviMain} to="/">
+            <NavLink
+              className={classes.naviMain}
+              onClick={userContext.showFooter}
+              to="/"
+            >
               Main
             </NavLink>
           </li>
@@ -44,7 +48,11 @@ const Navigation = () => {
                 <LogoutButton />
               ) : (
                 <li>
-                  <NavLink className={classes.login} to="/login">
+                  <NavLink
+                    className={classes.login}
+                    onClick={userContext.hideFooter}
+                    to="/login"
+                  >
                     Login
                   </NavLink>
                 </li>

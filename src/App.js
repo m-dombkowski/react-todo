@@ -34,7 +34,7 @@ function App() {
           </Route>
         </Route>
       </Routes>
-      {!userContext.isLoggedIn && <Footer />}
+      {!userContext.isLoggedIn && !userContext.form && <Footer />}
     </Fragment>
   );
 }
