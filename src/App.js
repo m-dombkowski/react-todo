@@ -17,7 +17,6 @@ import ChangePasswordForm from "./components/ChangePasswordForm/ChangePasswordFo
 
 function App() {
   const userContext = useContext(UserContext);
-  console.log(userContext);
 
   return (
     <Fragment>

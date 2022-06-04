@@ -8,7 +8,6 @@ const LogoutButton = () => {
   const auth = getAuth();
 
   const logoutHandler = () => {
-    console.log(userContext);
     signOut(auth)
       .then(() => {
         userContext.isLoggedIn = false;

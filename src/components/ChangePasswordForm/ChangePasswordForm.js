@@ -12,13 +12,14 @@ import {
 } from "../../validation/ChangePasswordValidation";
 import SettingsMenuContext from "../../context/settingsMenu-context";
 import { Link } from "react-router-dom";
+import Spinner from "../../ui/Spinner/Spinner";
 
 const ChangePasswordForm = () => {
-  const oldPasswordInputRef = useRef();
   const newPasswordInputRef = useRef();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
   const settingsMenuContext = useContext(SettingsMenuContext);
+  const [spinner, setSpinner] = useState(false);
   const [reauthenticate, setReauthenticate] = useState(false);
   const [reAuthMessage, setReAuthMessage] = useState("");
   const [successReAuth, setSuccessReAuth] = useState(null);
@@ -33,14 +34,16 @@ const ChangePasswordForm = () => {
   }, [navigate, userContext.isLoggedIn]);
 
   const changePasswordHandler = (event) => {
+    setSpinner(true);
     event.preventDefault();
     const newPasswordInput = newPasswordInputRef.current.value;
-    const oldPasswordInput = oldPasswordInputRef.current.value;
-    
+    setErrMsg("");
+    setSuccessReAuth(false);
+    setError(false);
     updatePassword(auth.currentUser, newPasswordInput)
       .then(() => {
-        emptyField(oldPasswordInput, newPasswordInput);
-        samePasswordCheck(oldPasswordInput, newPasswordInput);
+        emptyField(newPasswordInput);
+        setSpinner(false);
         setSuccessReAuth(false);
         setPasswordChanged(true);
         setTimeout(() => {
@@ -50,6 +53,7 @@ const ChangePasswordForm = () => {
       .catch((error) => {
         console.log(error.code);
         console.log(error.message);
+        setSpinner(false);
         setError(true);
         if (error.code) {
           switch (error.code) {
@@ -74,43 +78,61 @@ const ChangePasswordForm = () => {
 
   return (
     <Fragment>
-      <div className={classes.formContainer}>
-        <div className={classes.formHeader}>
-          <h2 className={classes.passwordChangeTitle}>Change your password</h2>
-          <Link
-            onClick={settingsMenuContext.showMenu}
-            to="/settings"
-            className={classes.goBackButton}
-            title="Go Back"
-          >
-            X
-          </Link>
-        </div>
-        <form
-          onSubmit={changePasswordHandler}
-          className={classes.passwordChangeForm}
-        >
-          <label htmlFor="oldPasswordInput">Your current password</label>
-          <input
-            ref={oldPasswordInputRef}
-            id="oldPasswordInput"
-            type="password"
-          ></input>
+      {!reauthenticate && (
+        <div>
+          <div className={classes.formContainer}>
+            <div className={classes.formHeader}>
+              <h2 className={classes.passwordChangeTitle}>
+                Change your password
+              </h2>
+              <Link
+                onClick={settingsMenuContext.showMenu}
+                to="/settings"
+                className={classes.goBackButton}
+                title="Go Back"
+              >
+                X
+              </Link>
+            </div>
+            <form
+              onSubmit={changePasswordHandler}
+              className={classes.passwordChangeForm}
+            >
+              <label
+                className={classes.passwordLabel}
+                htmlFor="newPasswordInput"
+              >
+                Your new password
+              </label>
+              <input
+                ref={newPasswordInputRef}
+                id="newPasswordInput"
+                type="password"
+                className={classes.passwordInput}
+              ></input>
+              <button className={classes.changePasswordButton} type="submit">
+                Submit
+              </button>
+              {passwordChanged && (
+                <div className={classes.successMessageContainer}>
+                  <p className={classes.successfulMessage}>Password Changed!</p>
+                  <p>You will be redirected to main page in 5 seconds...</p>
+                </div>
+              )}
+              {error && <p className={classes.errorMessage}>{errMsg}</p>}
+            </form>
+            {spinner && (
+              <div className={classes.spinnerContainer}>
+                <Spinner />
+              </div>
+            )}
+          </div>
 
-          <label htmlFor="newPasswordInput">Your new password</label>
-          <input
-            ref={newPasswordInputRef}
-            id="newPasswordInput"
-            type="password"
-          ></input>
-          <button type="submit">Submit</button>
-        </form>
-        {successReAuth && <p>{reAuthMessage}</p>}
-      </div>
-      {passwordChanged && (
-        <div className={classes.successMessageContainer}>
-          <p>Password Changed!</p>
-          <p>You will be redirected to main page in 5 seconds...</p>
+          {successReAuth && (
+            <div className={classes.reAuthContainer}>
+              <p className={classes.reAuthMessage}>{reAuthMessage}</p>
+            </div>
+          )}
         </div>
       )}
       {reauthenticate && (
@@ -120,7 +142,6 @@ const ChangePasswordForm = () => {
           reAuthMessage={setReAuthMessage}
         />
       )}
-      {error && <p>{errMsg}</p>}
     </Fragment>
   );
 };

@@ -14,7 +14,6 @@
   background: #fff;
   color: #000;
   padding: 12px 32px;
-  /* border: 1px solid #999; */
   text-decoration: none;
   border-radius: 10px;
   transition: all 0.2s;
@@ -53,9 +52,27 @@
 .userControlContainer {
   display: flex;
   align-items: center;
-  gap: 30px;
 }
 
 .settings {
   font-size: 16px;
+  margin-right: 10px;
+}
+
+@media (max-width: 800px) {
+  .header {
+    padding: 0 3%;
+  }
+}
+
+@media (max-width: 450px) {
+  .naviMain {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+  .login,
+  .settings {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
 }

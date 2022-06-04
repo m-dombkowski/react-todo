@@ -6,10 +6,12 @@ import { auth } from "../../firebase/firebaseAuth";
 import LoginValidation from "../../validation/LoginValidation";
 import img from "../../assets/beachWithMountains.jpg";
 import { setPersistence, browserSessionPersistence } from "firebase/auth";
+import Spinner from "../../ui/Spinner/Spinner";
 
 const LoginForm = () => {
   const [errorStatus, setErrorStatus] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [spinner, setSpinner] = useState(false);
   const navigate = useNavigate();
 
   const emailInputRef = useRef();
@@ -17,26 +19,24 @@ const LoginForm = () => {
 
   const loginFormHandler = async (event) => {
     event.preventDefault();
-
+    setSpinner(true);
+    setErrorMessage("");
+    setErrorStatus(false);
     const loginEmail = emailInputRef.current.value;
     const loginPassword = passwordInputRef.current.value;
 
     try {
-      setErrorMessage("");
       await signInWithEmailAndPassword(auth, loginEmail, loginPassword);
-      setErrorStatus(false);
+
       navigate("/");
+      setSpinner(false);
       setPersistence(auth, browserSessionPersistence)
         .then(() => {
-          // Existing and future Auth states are now persisted in the current
-          // session only. Closing the window would clear any existing state even
-          // if a user forgets to sign out.
-          // ...
-          // New sign-in will be persisted with session persistence.
           return signInWithEmailAndPassword(auth, loginEmail, loginPassword);
         })
         .catch((error) => {
           // Handle Errors here.
+
           const errorCode = error.code;
           console.log(errorCode);
           const errorMessage = error.message;
@@ -44,6 +44,7 @@ const LoginForm = () => {
         });
     } catch (error) {
       setErrorStatus(true);
+      setSpinner(false);
       setErrorMessage(error);
     }
   };
@@ -83,6 +84,11 @@ const LoginForm = () => {
             placeholder="Your password"
           ></input>
         </div>
+        {spinner && (
+          <div className={classes.spinnerContainer}>
+            <Spinner />
+          </div>
+        )}
         {errorStatus && <LoginValidation errorState={errorMessage} />}
         <div className={classes.loginControlButtons}>
           <button className={classes.login} type="submit">

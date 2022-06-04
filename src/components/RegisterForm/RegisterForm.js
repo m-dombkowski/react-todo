@@ -6,16 +6,21 @@ import RegisterInputsValidation from "../../validation/RegisterInputValidation";
 import { writeUserToDb } from "../../firebase/firebaseDatabase";
 import img from "../../assets/fallingStar.jpg";
 import classes from "./RegisterForm.module.css";
+import Spinner from "../../ui/Spinner/Spinner";
 
 const RegisterForm = () => {
   const [errorMessage, setErrorMessage] = useState("");
   const [errorStatus, setErrorStatus] = useState(false);
+  const [spinner, setSpinner] = useState(false);
   const registerEmailInputRef = useRef();
   const registerPasswordInputRef = useRef();
   let navigate = useNavigate();
 
   const registerAccountHandler = async (event) => {
     event.preventDefault();
+    setSpinner(true);
+    setErrorMessage("");
+    setErrorStatus(false);
     const registerEmailInput = registerEmailInputRef.current.value;
     const registerPasswordInput = registerPasswordInputRef.current.value;
 
@@ -25,11 +30,12 @@ const RegisterForm = () => {
         registerEmailInput,
         registerPasswordInput
       );
-
+      setSpinner(false);
       writeUserToDb();
       setErrorStatus(false);
       navigate("/");
     } catch (error) {
+      setSpinner(false);
       setErrorStatus(true);
       setErrorMessage(error);
     }
@@ -73,6 +79,11 @@ const RegisterForm = () => {
             placeholder="Your Password"
           ></input>
           <p className={classes.passwordInfo}>Min. 6 characters</p>
+          {spinner && (
+            <div className={classes.spinnerContainer}>
+              <Spinner />
+            </div>
+          )}
           {errorStatus && (
             <RegisterInputsValidation
               errorState={errorMessage}

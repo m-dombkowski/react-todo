@@ -9,14 +9,8 @@ export const passwordRegexValidation = (passwordInput) => {
   }
 };
 
-export const samePasswordCheck = (oldPassword, newPassword) => {
-  if (oldPassword === newPassword) {
-    throw new Error("Same password");
-  }
-};
-
-export const emptyField = (oldPasswordInput, newPasswordInput) => {
-  if (oldPasswordInput.length === 0 || newPasswordInput.length === 0) {
+export const emptyField = (newPasswordInput) => {
+  if (newPasswordInput.length === 0) {
     throw new Error("Empty input field");
   }
 };

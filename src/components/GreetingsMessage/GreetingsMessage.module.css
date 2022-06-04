@@ -1,5 +1,7 @@
 .welcomePage {
   text-align: center;
+  /* min-height: 50vh; */
+  /* overflow: hidden; */
 }
 
 .title {
@@ -54,6 +56,7 @@ p {
   font-weight: bold;
   transition: all 0.3s;
   position: relative;
+  margin-bottom: 40px;
 }
 
 .login::after {
@@ -91,4 +94,108 @@ p {
   right: 125px;
   opacity: 1;
   color: #fff;
+}
+
+@media (max-width: 1250px) {
+  .title {
+    font-size: 48px;
+  }
+
+  .messageContainer {
+    margin: 0 200px;
+  }
+
+  .mainMessage {
+    font-size: 22px;
+  }
+
+  .thanksMessage {
+    font-size: 22px;
+  }
+
+  .login {
+    font-size: 24px;
+  }
+
+  .login:hover {
+    padding: 12px 52px;
+  }
+}
+
+@media (max-width: 835px) {
+  .messageContainer {
+    margin: 0 100px;
+  }
+}
+
+@media (max-width: 640px) {
+  .title {
+    font-size: 36px;
+    margin: 100px 0 50px 0;
+  }
+
+  .messageContainer {
+    margin: 0 50px;
+  }
+
+  .mainMessage {
+    font-size: 18px;
+  }
+
+  .thanksMessage {
+    font-size: 18px;
+  }
+
+  .login:hover {
+    padding: 12px 52px;
+  }
+}
+
+@media (max-width: 540px) {
+  .title {
+    margin: 50px 0 25px 0;
+    font-size: 32px;
+  }
+
+  .mainMessage,
+  .thanksMessage {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 380px) {
+  .title {
+    margin: 30px 0 15px 0;
+    font-size: 26px;
+  }
+
+  .mainMessage,
+  .thanksMessage {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+
+  .login {
+    font-size: 20px;
+  }
+
+  .login:hover {
+    padding: 10px 38px;
+  }
+
+  .login::after,
+  .login::before {
+    font-size: 30px;
+  }
+
+  .login:hover::after {
+    left: 95px;
+    bottom: 5px;
+  }
+
+  .login:hover::before {
+    right: 95px;
+    bottom: 5px;
+  }
 }

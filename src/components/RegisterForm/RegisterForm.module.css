@@ -80,6 +80,10 @@
   font-weight: lighter;
 }
 
+.spinnerContainer {
+  text-align: center;
+}
+
 .registerButton {
   background: #fff;
   color: #000;

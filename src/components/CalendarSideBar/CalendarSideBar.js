@@ -10,7 +10,7 @@ const CalendarSideBar = (props) => {
           <li>
             You can also drag through multiple days/hours to add longer event
           </li>
-          <li>Adding event without a title will not add anything</li>
+          <li>Event without a title will not be added</li>
           <li>Click on an event to delete it</li>
           <li>In month view you can add "all day" events</li>
           <li>

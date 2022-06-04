@@ -107,6 +107,10 @@
   box-shadow: 2px 2px 8px -3px rgb(66 68 90);
   padding: 10px 15px;
 }
+.spinnerContainer {
+  text-align: center;
+  margin-top: 80px;
+}
 
 .redirectAnnouncement {
   text-align: center;

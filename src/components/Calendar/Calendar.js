@@ -71,7 +71,6 @@ const Calendar = (props) => {
       push(ref(db, "users/" + auth.currentUser.uid + "/events"), obj);
 
       // Pushing event to the array so I can delete it without reloading the page
-      // Basically updating main array
       eventsArray.push(obj);
     }
   };

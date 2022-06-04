@@ -12,12 +12,14 @@ import {
   sameEmailCheck,
   validateByErrorMessage,
 } from "../../validation/ChangeEmailValidation";
+import Spinner from "../../ui/Spinner/Spinner";
 
 const ChangeEmailForm = () => {
   const emailInputRef = useRef();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
   const settingsMenuContext = useContext(SettingsMenuContext);
+  const [spinner, setSpinner] = useState(false);
   const [emailChanged, setEmailChanged] = useState(false);
   const [reauthenticate, setReauthenticate] = useState(false);
   const [reAuthMessage, setReAuthMessage] = useState("");
@@ -32,6 +34,7 @@ const ChangeEmailForm = () => {
   }, [navigate, userContext.isLoggedIn]);
 
   const changeEmailHandler = (event) => {
+    setSpinner(true);
     event.preventDefault();
     const emailInput = emailInputRef.current.value;
     const loggedEmail = auth.currentUser.email;
@@ -41,6 +44,7 @@ const ChangeEmailForm = () => {
 
     updateEmail(auth.currentUser, emailInput)
       .then(() => {
+        setSpinner(false);
         sameEmailCheck(loggedEmail, emailInput);
         emptyField(emailInput);
         regexCheck(emailInput);
@@ -52,7 +56,7 @@ const ChangeEmailForm = () => {
       })
       .catch((error) => {
         setError(true);
-
+        setSpinner(false);
         if (error.code) {
           switch (error.code) {
             case "auth/invalid-email":
@@ -122,6 +126,11 @@ const ChangeEmailForm = () => {
               )}
               {error && <p className={classes.errorMessage}>{errMsg}</p>}
             </form>
+            {spinner && (
+              <div className={classes.spinnerContainer}>
+                <Spinner />
+              </div>
+            )}
           </div>
           {successReAuth && (
             <div className={classes.reAuthContainer}>
