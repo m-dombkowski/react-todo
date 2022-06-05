@@ -2,7 +2,8 @@
   display: flex;
   justify-content: center;
   margin-top: 100px;
-  height: 65vh;
+
+  height: 75vh;
 }
 
 .photoSection {
@@ -18,6 +19,9 @@
 }
 
 .loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 250px;
   padding: 80px 172px 120px 150px;
   background-image: linear-gradient(
@@ -69,7 +73,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 60px;
+  margin-top: 30px;
   gap: 45px;
 }
 
@@ -114,7 +118,7 @@
 }
 
 .redirectRegister::before {
-  left: 100px;
+  left: 0;
   opacity: 0;
   content: "Register Now!";
   border: 1px solid #c4c4c4;
@@ -132,13 +136,7 @@
   background-color: #f5f5f5;
 }
 
-@media (max-width: 1200px) {
-  .formContainer {
-    height: 55vh;
-  }
-}
-
-@media (max-width: 1000px) {
+@media (max-width: 1130px) {
   .img {
     display: none;
   }
@@ -152,13 +150,59 @@
 
 @media (max-width: 600px) {
   .formContainer {
-    height: 60vh;
+    height: 65vh;
   }
   .loginForm {
-    padding: 30px 82px 30px 60px;
+    padding: 50px 62px 50px 0px;
   }
 
   .loginControlButtons {
     margin-top: 30px;
+  }
+}
+
+@media (max-width: 450px) {
+  .loginForm {
+    height: 50vh;
+    padding: 30px 50px 0px 50px;
+    justify-content: start;
+  }
+
+  .loginFormTitle {
+    font-size: 26px;
+  }
+
+  .emailInputContainer {
+    margin-top: 30px;
+  }
+
+  .emailLabel {
+    font-size: 16px;
+  }
+
+  .passwordLabel {
+    font-size: 16px;
+  }
+
+  .login {
+    padding: 8px 20px;
+    font-size: 16px;
+  }
+
+  .redirectRegister::after,
+  .redirectRegister::before {
+    font-size: 16px;
+  }
+}
+
+@media (max-height: 740px) {
+  .loginForm {
+    height: 65vh;
+  }
+}
+
+@media (max-height: 670px) {
+  .loginForm {
+    height: 75vh;
   }
 }

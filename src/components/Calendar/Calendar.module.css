@@ -11,3 +11,10 @@
   display: grid !important;
   grid-template-columns: 1fr 3.5fr;
 }
+
+@media (max-height: 650px) {
+  .pageContainer,
+  .modalOpen {
+    grid-template-columns: 1fr;
+  }
+}

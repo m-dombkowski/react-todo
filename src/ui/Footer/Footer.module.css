@@ -56,7 +56,7 @@
   }
 }
 
-@media (max-height: 800px) {
+@media (max-height: 750px) {
   .footer {
     position: relative;
   }

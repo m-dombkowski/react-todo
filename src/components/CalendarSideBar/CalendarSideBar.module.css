@@ -56,8 +56,28 @@
   cursor: pointer;
 }
 
-.toggleWeekends {
-}
+@media (max-height: 650px) {
+  .sideBar {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    padding-right: 0;
+  }
 
-.toggleWeekNumbers {
+  .helperSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 0;
+  }
+
+  .helperTitle {
+    margin-bottom: 30px;
+  }
+
+  .instructionTitle {
+    font-size: 28px;
+    margin-bottom: 30px;
+    padding-left: 0;
+    text-align: center;
+  }
 }

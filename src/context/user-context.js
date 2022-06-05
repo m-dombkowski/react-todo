@@ -4,15 +4,11 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 const UserContext = React.createContext({
   currentUser: "",
   isLoggedIn: false,
-  form: false,
-  hideFooter: () => {},
-  showFooter: () => {},
 });
 
 export const UserContextProvider = (props) => {
   const [currentUser, setCurrentUser] = useState("");
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  const [isForm, setIsForm] = useState(false);
 
   const auth = getAuth();
 
@@ -28,20 +24,9 @@ export const UserContextProvider = (props) => {
     });
   }, [auth]);
 
-  const hideFooter = () => {
-    setIsForm(true);
-  };
-
-  const showFooter = () => {
-    setIsForm(false);
-  };
-
   const contextValue = {
     currentUser: currentUser,
     isLoggedIn: isLoggedIn,
-    form: isForm,
-    hideFooter,
-    showFooter,
   };
 
   return (

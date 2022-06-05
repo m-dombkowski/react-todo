@@ -1,23 +1,17 @@
 import "./App.css";
 
 import Navigation from "./ui/Navigation/Navigation";
-
-import Footer from "./ui/Footer/Footer";
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/LoginPage/LoginPage";
-import { Fragment, useContext } from "react";
+import { Fragment } from "react";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import WelcomePage from "./pages/MainPage/MainPage";
-
 import AuthenticationModal from "./components/ReAuthenticateUserModal/AuthenticationModal";
 import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
-import UserContext from "./context/user-context";
 import ChangeEmailForm from "./components/ChangeEmailForm/ChangeEmailForm";
 import ChangePasswordForm from "./components/ChangePasswordForm/ChangePasswordForm";
 
 function App() {
-  const userContext = useContext(UserContext);
-
   return (
     <Fragment>
       <Navigation />
@@ -34,7 +28,6 @@ function App() {
           </Route>
         </Route>
       </Routes>
-      {!userContext.isLoggedIn && !userContext.form && <Footer />}
     </Fragment>
   );
 }
