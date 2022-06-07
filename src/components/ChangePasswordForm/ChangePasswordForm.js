@@ -76,7 +76,7 @@ const ChangePasswordForm = () => {
   return (
     <Fragment>
       {!reauthenticate && (
-        <Fragment>
+        <div className={classes.modalContainer}>
           <div className={classes.formContainer}>
             <div className={classes.formHeader}>
               <h2 className={classes.passwordChangeTitle}>
@@ -135,7 +135,7 @@ const ChangePasswordForm = () => {
               <p className={classes.reAuthMessage}>{reAuthMessage}</p>
             </div>
           )}
-        </Fragment>
+        </div>
       )}
       {reauthenticate && (
         <AuthenticationModal

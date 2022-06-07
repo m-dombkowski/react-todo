@@ -9,7 +9,7 @@ const UserSettings = () => {
   const menuContext = useContext(SettingsMenuContext);
 
   return (
-    <div className={classes.settingsContainer}>
+    <div>
       {menuContext.menuVisible && (
         <div className={classes.linksContainer}>
           <Link

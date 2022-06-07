@@ -1,3 +1,10 @@
+.modalContainer {
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20%;
+}
+
 .formContainer {
   width: 650px;
   height: 320px;

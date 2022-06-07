@@ -1,16 +1,9 @@
-.settingsContainer {
-  display: flex !important;
-  justify-content: center;
-  align-items: center;
-  height: 50vh;
-  padding-top: 10%;
-}
-
 .linksContainer {
   display: flex !important;
   justify-content: center;
   align-items: center;
   gap: 100px;
+  padding-top: 20%;
 }
 
 .emailLink,
@@ -49,7 +42,7 @@
 }
 
 @media (max-width: 1000px) {
-  .settingsContainer {
+  .linksContainer {
     gap: 75px;
   }
 }
@@ -62,7 +55,7 @@
 }
 
 @media (max-width: 600px) {
-  .settingsContainer {
+  .linksContainer {
     gap: 50px;
   }
   .emailSvg,
@@ -76,7 +69,7 @@
 }
 
 @media (max-width: 500px) {
-  .settingsContainer {
+  .linksContainer {
     flex-direction: column;
     margin-top: 100px;
   }

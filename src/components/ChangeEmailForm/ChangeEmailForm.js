@@ -82,7 +82,7 @@ const ChangeEmailForm = () => {
   return (
     <Fragment>
       {!reauthenticate && (
-        <div>
+        <div className={classes.modalContainer}>
           <div className={classes.formContainer}>
             <div className={classes.formHeader}>
               <h2 className={classes.emailChangeTitle}>Change your email</h2>
