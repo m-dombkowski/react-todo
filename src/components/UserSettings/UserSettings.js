@@ -1,4 +1,4 @@
-import { Fragment, useContext } from "react";
+import { useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import SettingsMenuContext from "../../context/settingsMenu-context";
 import classes from "./UserSettings.module.css";
