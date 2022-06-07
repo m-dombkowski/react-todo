@@ -34,7 +34,6 @@ const AuthenticationModal = (props) => {
       })
       .catch((error) => {
         setError(true);
-        console.log(error.code);
         switch (error.code) {
           case "auth/wrong-password":
             setErrorMsg("Wrong password");

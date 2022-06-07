@@ -50,8 +50,6 @@ const ChangePasswordForm = () => {
         }, 5000);
       })
       .catch((error) => {
-        console.log(error.code);
-        console.log(error.message);
         setSpinner(false);
         setError(true);
         if (error.code) {

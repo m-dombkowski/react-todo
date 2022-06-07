@@ -37,7 +37,7 @@ const Calendar = (props) => {
       }
     };
 
-    initializeEvents().catch((error) => console.log(error));
+    initializeEvents().catch((error) => console.error(error));
   }, []);
 
   const toggleWeekendsHandler = () => {
@@ -82,7 +82,7 @@ const Calendar = (props) => {
   const removeEventHandler = (clickInfo) => {
     eventsArray.forEach((event) => {
       if (event.id === clickInfo.event.id) {
-        removeEventFromFirebase(clickInfo).catch((err) => console.log(err));
+        removeEventFromFirebase(clickInfo).catch((err) => console.error(err));
         clickInfo.event.remove();
       }
     });

@@ -35,12 +35,7 @@ const LoginForm = () => {
           return signInWithEmailAndPassword(auth, loginEmail, loginPassword);
         })
         .catch((error) => {
-          // Handle Errors here.
-
-          const errorCode = error.code;
-          console.log(errorCode);
-          const errorMessage = error.message;
-          console.log(errorMessage);
+          console.error(error);
         });
     } catch (error) {
       setErrorStatus(true);

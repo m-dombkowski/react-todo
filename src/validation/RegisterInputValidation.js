@@ -27,10 +27,10 @@ const RegisterInputsValidation = (props) => {
         setErrorMessage("Error. Can't leave blank field");
         break;
       case "auth/email-already-in-use":
-        setErrorMessage("This e-mail is already taken.");
+        setErrorMessage("This e-mail is already taken");
         break;
       default:
-        console.log("No idea what happened");
+        setErrorMessage("There was an error, please try again");
     }
   }, [errorType, email, password]);
 

@@ -1,6 +1,6 @@
 export const regexCheck = (emailInput) => {
   const emailRegex =
-    /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   if (!emailRegex.test(emailInput)) {
     throw new Error("Regex error");
@@ -26,7 +26,7 @@ export const validateByErrorMessage = (errorMessage) => {
     return message;
   }
   if (errorMessage === "Regex error") {
-    message = "Invalid Email format xd";
+    message = "Invalid Email format";
     return message;
   }
   if (errorMessage === "Same email") {
