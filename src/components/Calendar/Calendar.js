@@ -118,12 +118,6 @@ const Calendar = (props) => {
           eventClick={removeEventHandler}
           events={eventsArray}
           height="89vh"
-          windowResize={function (arg) {
-            console.log(
-              "The calendar has adjusted to a window resize. Current view: " +
-                arg.view.type
-            );
-          }}
         />
         {addEventModal && (
           <AddEventModal

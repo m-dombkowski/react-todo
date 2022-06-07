@@ -7,7 +7,6 @@ import { auth } from "../../firebase/firebaseAuth";
 import AuthenticationModal from "../ReAuthenticateUserModal/AuthenticationModal";
 import {
   emptyField,
-  samePasswordCheck,
   validateByErrorMessage,
 } from "../../validation/ChangePasswordValidation";
 import SettingsMenuContext from "../../context/settingsMenu-context";
