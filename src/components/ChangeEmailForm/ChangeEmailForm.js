@@ -124,7 +124,11 @@ const ChangeEmailForm = () => {
                   </p>
                 </div>
               )}
-              {error && <p className={classes.errorMessage}>{errMsg}</p>}
+              {error && (
+                <div className={classes.errorMessageContainer}>
+                  <p className={classes.errorMessage}>{errMsg}</p>
+                </div>
+              )}
             </form>
             {spinner && (
               <div className={classes.spinnerContainer}>

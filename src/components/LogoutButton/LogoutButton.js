@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 import UserContext from "../../context/user-context";
 import { getAuth, signOut } from "firebase/auth";
 import classes from "./LogoutButton.module.css";
@@ -16,11 +16,11 @@ const LogoutButton = () => {
   };
 
   return (
-    <div>
+    <Fragment>
       <button className={classes.logout} onClick={logoutHandler}>
         Logout
       </button>
-    </div>
+    </Fragment>
   );
 };
 

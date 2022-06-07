@@ -79,7 +79,7 @@ const ChangePasswordForm = () => {
   return (
     <Fragment>
       {!reauthenticate && (
-        <div>
+        <Fragment>
           <div className={classes.formContainer}>
             <div className={classes.formHeader}>
               <h2 className={classes.passwordChangeTitle}>
@@ -119,7 +119,12 @@ const ChangePasswordForm = () => {
                   <p>You will be redirected to main page in 5 seconds...</p>
                 </div>
               )}
-              {error && <p className={classes.errorMessage}>{errMsg}</p>}
+              {error && (
+                <div className={classes.errorMessageContainer}>
+                  {" "}
+                  <p className={classes.errorMessage}>{errMsg}</p>
+                </div>
+              )}
             </form>
             {spinner && (
               <div className={classes.spinnerContainer}>
@@ -133,7 +138,7 @@ const ChangePasswordForm = () => {
               <p className={classes.reAuthMessage}>{reAuthMessage}</p>
             </div>
           )}
-        </div>
+        </Fragment>
       )}
       {reauthenticate && (
         <AuthenticationModal

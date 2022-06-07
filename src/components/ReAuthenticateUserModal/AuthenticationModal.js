@@ -43,7 +43,7 @@ const AuthenticationModal = (props) => {
             setErrorMsg(`Can't leave empty field`);
             break;
           case "auth/user-mismatch":
-            setErrorMsg("Wrong credentials, please check email and password");
+            setErrorMsg("Wrong credentials, please try again");
             break;
           default:
             setErrorMsg("Dunno");

@@ -10,7 +10,7 @@
 
 .modalHeader {
   text-align: center;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #999;
   height: 75px;
   display: flex;
   align-items: center;
@@ -27,6 +27,7 @@
 .title {
   font-size: 26px;
   margin-top: 10px;
+  font-weight: bold;
 }
 
 .message {
@@ -73,3 +74,49 @@
   background-color: #f5f5f5;
   cursor: pointer;
 }
+
+@media (max-width: 700px) {
+  .formContainer {
+    width: 450px;
+  }
+
+  .title {
+    font-size: 22px;
+  }
+
+  .message {
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+
+  .passwordLabel {
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 475px) {
+  .formContainer {
+    width: 300px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .message {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+
+  .passwordLabel {
+    font-size: 16px;
+  }
+
+  .modalForm {
+    padding: 20px 35px;
+  }
+
+  .errorMessage {
+    font-size: 16px;
+  }
+} ;
