@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { Fragment, useContext } from "react";
 import { Link, Outlet } from "react-router-dom";
 import SettingsMenuContext from "../../context/settingsMenu-context";
 import classes from "./UserSettings.module.css";
@@ -9,7 +9,7 @@ const UserSettings = () => {
   const menuContext = useContext(SettingsMenuContext);
 
   return (
-    <div>
+    <Fragment>
       {menuContext.menuVisible && (
         <div className={classes.linksContainer}>
           <Link
@@ -41,7 +41,7 @@ const UserSettings = () => {
         </div>
       )}
       <Outlet />
-    </div>
+    </Fragment>
   );
 };
 
