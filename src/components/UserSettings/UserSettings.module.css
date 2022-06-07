@@ -41,6 +41,16 @@
   border: 1px solid transparent;
 }
 
+@media (max-width: 2560px) {
+  .linksContainer {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 100px;
+    padding-top: 20%;
+  }
+}
+
 @media (max-width: 1000px) {
   .linksContainer {
     gap: 75px;
