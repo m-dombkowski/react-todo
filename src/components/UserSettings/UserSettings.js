@@ -11,7 +11,7 @@ const UserSettings = () => {
   return (
     <div className={classes.settingsContainer}>
       {menuContext.menuVisible && (
-        <Fragment>
+        <div className={classes.linksContainer}>
           <Link
             className={classes.emailLink}
             onClick={menuContext.hideMenu}
@@ -38,7 +38,7 @@ const UserSettings = () => {
               <p className={classes.passwordLinkText}>Change Password</p>
             </div>
           </Link>
-        </Fragment>
+        </div>
       )}
       <Outlet />
     </div>
