@@ -5,8 +5,8 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid #d9dade;
-  padding: 0 5%;
   z-index: 999;
+  width: 100%;
 }
 
 .login,
@@ -46,7 +46,8 @@
 }
 
 .nav {
-  width: 100%;
+  width: inherit;
+  padding: 0 3%;
 }
 
 .userControlContainer {
@@ -57,12 +58,6 @@
 .settings {
   font-size: 16px;
   margin-right: 10px;
-}
-
-@media (max-width: 800px) {
-  .header {
-    padding: 0 3%;
-  }
 }
 
 @media (max-width: 450px) {

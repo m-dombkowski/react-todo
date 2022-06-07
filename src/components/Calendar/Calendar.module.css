@@ -12,9 +12,29 @@
   grid-template-columns: 1fr 3.5fr;
 }
 
-@media (max-height: 650px) {
+@media (max-width: 1000px) {
+  .calendar {
+    position: relative;
+  }
   .pageContainer,
   .modalOpen {
     grid-template-columns: 1fr;
+    margin-right: 0 !important;
+  }
+}
+
+@media (max-height: 700px) {
+  .calendar {
+    position: relative;
+  }
+  .pageContainer,
+  .modalOpen {
+    grid-template-columns: 1fr;
+  }
+
+  .fc-prev-button,
+  .fc-next-button,
+  .fc-today-button {
+    display: none;
   }
 }

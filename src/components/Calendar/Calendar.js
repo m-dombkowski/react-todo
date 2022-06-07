@@ -2,7 +2,7 @@ import FullCalendar from "@fullcalendar/react"; // must be first
 import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
-import listPlugin from "@fullcalendar/list";
+
 import classes from "./Calendar.module.css";
 import CalendarSideBar from "../CalendarSideBar/CalendarSideBar";
 import { useEffect, useState } from "react";
@@ -92,14 +92,6 @@ const Calendar = (props) => {
     <div
       className={`${addEventModal ? classes.modalOpen : classes.pageContainer}`}
     >
-      {addEventModal && (
-        <AddEventModal
-          obj={objState}
-          handler={addEventHandler}
-          onClose={closeModalHandler}
-        />
-      )}
-
       <CalendarSideBar
         onChangeWeekend={toggleWeekendsHandler}
         weekendState={toggleWeekends}
@@ -109,17 +101,12 @@ const Calendar = (props) => {
       />
       <div className={classes.calendar}>
         <FullCalendar
-          plugins={[
-            dayGridPlugin,
-            timeGridPlugin,
-            interactionPlugin,
-            listPlugin,
-          ]}
+          plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
           initialView="dayGridMonth"
           headerToolbar={{
             left: "prev,next today",
             center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay,list",
+            right: "dayGridMonth,timeGridWeek,timeGridDay",
           }}
           editable={true}
           selectable={true}
@@ -131,7 +118,20 @@ const Calendar = (props) => {
           eventClick={removeEventHandler}
           events={eventsArray}
           height="89vh"
+          windowResize={function (arg) {
+            console.log(
+              "The calendar has adjusted to a window resize. Current view: " +
+                arg.view.type
+            );
+          }}
         />
+        {addEventModal && (
+          <AddEventModal
+            obj={objState}
+            handler={addEventHandler}
+            onClose={closeModalHandler}
+          />
+        )}
       </div>
     </div>
   );

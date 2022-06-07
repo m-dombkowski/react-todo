@@ -19,6 +19,7 @@
 }
 
 .loginForm {
+  /* height: inherit; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -163,7 +164,7 @@
 
 @media (max-width: 450px) {
   .loginForm {
-    height: 50vh;
+    height: 55vh;
     padding: 30px 50px 0px 50px;
     justify-content: start;
   }
@@ -195,13 +196,13 @@
   }
 }
 
-@media (max-height: 740px) {
+@media (max-height: 835px) {
   .loginForm {
     height: 65vh;
   }
 }
 
-@media (max-height: 670px) {
+@media (max-height: 710px) {
   .loginForm {
     height: 75vh;
   }
