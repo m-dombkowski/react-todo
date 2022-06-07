@@ -3,7 +3,7 @@
   justify-content: center;
   align-items: center;
   gap: 100px;
-  padding-top: 20%;
+  padding-top: 15%;
 }
 
 .emailLink,
@@ -41,13 +41,15 @@
   border: 1px solid transparent;
 }
 
+/* this huge media is made because somehow this single class doesn't work after deploy :) */
+
 @media (max-width: 3440px) {
   .linksContainer {
     display: flex !important;
     justify-content: center;
     align-items: center;
     gap: 100px;
-    padding-top: 20%;
+    padding-top: 15%;
   }
 }
 
