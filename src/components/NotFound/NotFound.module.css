@@ -1,7 +1,6 @@
 .mainContainer {
   display: grid;
   grid-template-columns: 1fr;
-  border-top: 1px solid #999;
 }
 .textContainer {
   text-align: center;

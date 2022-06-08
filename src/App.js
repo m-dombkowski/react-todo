@@ -18,7 +18,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<WelcomePage replace to="/welcome" />} />
-        <Route path="*" element={<NotFoundPage />} />
+        <Route path="not-found" element={<NotFoundPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="settings" element={<UserSettingsPage />}>
