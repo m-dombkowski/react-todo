@@ -10,6 +10,7 @@ import AuthenticationModal from "./components/ReAuthenticateUserModal/Authentica
 import UserSettingsPage from "./pages/UserSettingsPage/UserSettingsPage";
 import ChangeEmailForm from "./components/ChangeEmailForm/ChangeEmailForm";
 import ChangePasswordForm from "./components/ChangePasswordForm/ChangePasswordForm";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <Navigation />
       <Routes>
         <Route path="/" element={<WelcomePage replace to="/welcome" />} />
+        <Route path="*" element={<NotFoundPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="settings" element={<UserSettingsPage />}>

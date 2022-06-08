@@ -1,0 +1,28 @@
+.mainContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  border-top: 1px solid #999;
+}
+.textContainer {
+  text-align: center;
+  margin-top: 10%;
+}
+
+.title {
+  font-size: 64px;
+  margin-bottom: 50px;
+}
+
+.code {
+  font-size: 48px;
+  color: #ea2027;
+}
+
+.mainMessage {
+  font-size: 26px;
+  margin-bottom: 25px;
+}
+
+.informationMessage {
+  font-size: 24px;
+}
