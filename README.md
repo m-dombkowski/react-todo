@@ -1,12 +1,6 @@
-
--------------------------------------------------
-|                                               |
-|   Here is the link to a working site:         |
-|                                               |
-|   https://calendar-react-md.netlify.app/      |
-|                                               |
--------------------------------------------------
-
+Here is the link to a working site: 
+https://calendar-react-md.netlify.app/      
+                                               
 This calendar app was my first React.js project. It's a simple application in which you get access to your own calendar where you can add/delete events. In order to get access to it's features you need to create account which is linked to Firebase authentication. After creating account and logging in you get access to all the features including calendar which saves events data in the Firebase "Realtime Database" and account options like, change password or change email
 
 
