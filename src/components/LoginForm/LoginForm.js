@@ -54,7 +54,7 @@ const LoginForm = () => {
         />
       </div>
       <form onSubmit={loginFormHandler} className={classes.loginForm}>
-        <h1 className={classes.loginFormTitle}>Sign in here!</h1>
+        <h1 className={classes.loginFormTitle}>Log in here!</h1>
         <div className={classes.emailInputContainer}>
           <label className={classes.emailLabel} htmlFor="email">
             Email

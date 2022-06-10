@@ -9,7 +9,7 @@ const SignedUser = () => {
 
   return (
     <div className={classes.info}>
-      {isLoggedIn ? "Signed in!" : "Not signed in"}
+      {isLoggedIn ? "Logged in!" : "Not logged in"}
     </div>
   );
 };
