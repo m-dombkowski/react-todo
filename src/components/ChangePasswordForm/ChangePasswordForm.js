@@ -6,7 +6,7 @@ import { updatePassword } from "firebase/auth";
 import { auth } from "../../firebase/firebaseAuth";
 import AuthenticationModal from "../ReAuthenticateUserModal/AuthenticationModal";
 import {
-  emptyField,
+  validate,
   validateByErrorMessage,
 } from "../../validation/ChangePasswordValidation";
 import SettingsMenuContext from "../../context/settingsMenu-context";
@@ -15,6 +15,7 @@ import Spinner from "../../ui/Spinner/Spinner";
 
 const ChangePasswordForm = () => {
   const newPasswordInputRef = useRef();
+  const newPasswordSecondInputRef = useRef();
   const navigate = useNavigate();
   const userContext = useContext(UserContext);
   const settingsMenuContext = useContext(SettingsMenuContext);
@@ -36,12 +37,13 @@ const ChangePasswordForm = () => {
     setSpinner(true);
     event.preventDefault();
     const newPasswordInput = newPasswordInputRef.current.value;
+    const newPasswordSecondInput = newPasswordSecondInputRef.current.value;
     setErrMsg("");
     setSuccessReAuth(false);
     setError(false);
     updatePassword(auth.currentUser, newPasswordInput)
       .then(() => {
-        emptyField(newPasswordInput);
+        validate(newPasswordInput, newPasswordSecondInput);
         setSpinner(false);
         setSuccessReAuth(false);
         setPasswordChanged(true);
@@ -104,6 +106,18 @@ const ChangePasswordForm = () => {
               <input
                 ref={newPasswordInputRef}
                 id="newPasswordInput"
+                type="password"
+                className={classes.passwordInput}
+              ></input>
+              <label
+                className={classes.passwordLabel}
+                htmlFor="newPasswordSecondInput"
+              >
+                Pass new password again
+              </label>
+              <input
+                ref={newPasswordSecondInputRef}
+                id="newPasswordSecondInput"
                 type="password"
                 className={classes.passwordInput}
               ></input>

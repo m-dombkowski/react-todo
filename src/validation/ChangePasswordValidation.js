@@ -9,14 +9,22 @@ export const passwordRegexValidation = (passwordInput) => {
   }
 };
 
-export const emptyField = (newPasswordInput) => {
-  if (newPasswordInput.length === 0) {
+export const validate = (firstInput, secondInput) => {
+  if (firstInput.length === 0 || secondInput.length === 0) {
     throw new Error("Empty input field");
+  }
+
+  if (firstInput !== secondInput) {
+    throw new Error("Different input values");
   }
 };
 
 export const validateByErrorMessage = (errorMessage) => {
   let message;
+  if (errorMessage === "Different input values") {
+    message = "Passwords are not identical";
+    return message;
+  }
   if (errorMessage === "Empty input field") {
     message = `Input field(s) can't be empty`;
     return message;

@@ -1,21 +1,17 @@
-export const regexCheck = (emailInput) => {
+export const validate = (currentUserEmail, emailInput) => {
+  if (emailInput.length === 0) {
+    throw new Error("Empty input field");
+  }
+
   const emailRegex =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
   if (!emailRegex.test(emailInput)) {
     throw new Error("Regex error");
   }
-};
 
-export const sameEmailCheck = (currentUserEmail, emailInput) => {
   if (currentUserEmail === emailInput) {
     throw new Error("Same email");
-  }
-};
-
-export const emptyField = (emailInput) => {
-  if (emailInput.length === 0) {
-    throw new Error("Empty input field");
   }
 };
 

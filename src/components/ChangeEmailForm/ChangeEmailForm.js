@@ -7,9 +7,7 @@ import UserContext from "../../context/user-context";
 import AuthenticationModal from "../ReAuthenticateUserModal/AuthenticationModal";
 import SettingsMenuContext from "../../context/settingsMenu-context";
 import {
-  emptyField,
-  regexCheck,
-  sameEmailCheck,
+  validate,
   validateByErrorMessage,
 } from "../../validation/ChangeEmailValidation";
 import Spinner from "../../ui/Spinner/Spinner";
@@ -45,9 +43,7 @@ const ChangeEmailForm = () => {
     updateEmail(auth.currentUser, emailInput)
       .then(() => {
         setSpinner(false);
-        sameEmailCheck(loggedEmail, emailInput);
-        emptyField(emailInput);
-        regexCheck(emailInput);
+        validate(loggedEmail, emailInput);
         setSuccessReAuth(false);
         setEmailChanged(true);
         setTimeout(() => {
