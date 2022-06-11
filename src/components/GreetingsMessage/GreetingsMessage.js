@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import firebaseDark from "../../assets/firebaseDark.svg";
 
 import classes from "./GreetingsMessage.module.css";
 
@@ -30,8 +31,18 @@ const GreetingsMessage = () => {
           >
             Fullcalendar.io
           </a>{" "}
-          library for a calendar so feel free to check it out!
+          library for a calendar, and{" "}
+          <a
+            className={classes.firebaseAnchor}
+            href="https://firebase.google.com/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Firebase
+          </a>{" "}
+          for storing data and authentication so feel free to check them out!
         </p>
+
         <p className={classes.thanksMessage}>
           Thanks for checking out my app, hope you enjoy it ;).{" "}
         </p>
@@ -41,6 +52,11 @@ const GreetingsMessage = () => {
           Login
         </Link>
       </div>
+      <img
+        className={classes.firebaseLogo}
+        src={firebaseDark}
+        alt="dark firebase svg icon"
+      />
     </div>
   );
 };

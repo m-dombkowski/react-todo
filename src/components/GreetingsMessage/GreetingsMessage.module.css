@@ -8,7 +8,7 @@
   font-size: 56px;
   display: flex;
   justify-content: center;
-  margin: 100px 0;
+  margin: 75px 0;
 }
 
 p {
@@ -26,7 +26,8 @@ p {
 }
 
 .reactAnchor,
-.calendarAnchor {
+.calendarAnchor,
+.firebaseAnchor {
   text-decoration: none;
   color: inherit;
   font-weight: bold;
@@ -36,6 +37,14 @@ p {
 .reactAnchor:hover,
 .calendarAnchor:hover {
   color: #0097e6;
+}
+
+.firebaseAnchor:hover {
+  color: #ffca28;
+}
+
+.firebaseLogo {
+  width: 300px;
 }
 
 .thanksMessage {
@@ -96,19 +105,25 @@ p {
   color: #fff;
 }
 
+@media (max-width: 1500px) {
+  .messageContainer {
+    margin: 0 275px;
+  }
+}
+
 @media (max-width: 1250px) {
   .title {
     font-size: 48px;
+  }
+  .firebaseLogo {
+    margin-bottom: 20px;
   }
 
   .messageContainer {
     margin: 0 200px;
   }
 
-  .mainMessage {
-    font-size: 22px;
-  }
-
+  .mainMessage,
   .thanksMessage {
     font-size: 22px;
   }
@@ -122,13 +137,31 @@ p {
   }
 }
 
-@media (max-width: 835px) {
+@media (max-width: 1000px) {
+  .title {
+    margin: 40px 0;
+  }
+
   .messageContainer {
-    margin: 0 100px;
+    margin: 0 125px;
+  }
+
+  .mainMessage,
+  .thanksMessage {
+    font-size: 20px;
   }
 }
 
-@media (max-width: 640px) {
+@media (max-width: 860px) {
+  .messageContainer {
+    margin: 0 100px;
+  }
+  .firebaseLogo {
+    width: 250px;
+  }
+}
+
+@media (max-width: 800px) {
   .title {
     font-size: 36px;
     margin: 100px 0 50px 0;
@@ -148,6 +181,10 @@ p {
 
   .login:hover {
     padding: 12px 52px;
+  }
+  .firebaseLogo {
+    width: 200px;
+    margin-bottom: 40px;
   }
 }
 
